@@ -1,0 +1,3 @@
+[submodule "pack/vendor/opt/UltiSnips"]
+	path = pack/vendor/opt/UltiSnips
+	url = https://github.com/SirVer/ultisnips

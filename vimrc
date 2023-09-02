@@ -1,6 +1,3 @@
-syntax on
-filetype plugin indent on
-
 if !empty($VIM_TERMINAL)
   echom "Vim is nested in vim terminal, you don't want this"
 endif
@@ -14,6 +11,9 @@ set expandtab
 set foldlevelstart=99
 set foldmethod=syntax
 set gdefault
+
+" Automatically reopen a file that has been changed outside of vim
+set autoread
 
 " Make editing files start in the same dir as the current file
 set autochdir
@@ -41,6 +41,9 @@ set tabstop=2
 
 " Allow backspace in insert mode to go outside of the inserted region
 set backspace=indent,eol,start
+
+" Show partially-entered commands
+set showcmd
 
 noremap <C-@><C-@> <C-w><C-w>
 noremap <C-@><leader> <C-w><C-w>
@@ -151,6 +154,8 @@ cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
       \ '' : getcmdline()[:getcmdpos()-2]<cr>
 
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
@@ -223,5 +228,14 @@ augroup lsp_install
   nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
 augroup END
 
+packadd! vim-lsp
+
 " doesn't work
-autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
+" autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
+
+packadd! UltiSnips
+
+" Had to be after packages have added their ftdetects
+filetype plugin indent on
+
+syntax on
