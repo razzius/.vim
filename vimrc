@@ -8,7 +8,7 @@ let mapleader = ' '
 set autoindent
 set clipboard=unnamedplus
 set expandtab
-set foldlevelstart=99
+set nofoldenable
 set foldmethod=syntax
 set gdefault
 
@@ -80,7 +80,7 @@ nnoremap gM gm
 nnoremap j gj
 nnoremap k gk
 nnoremap <leader>, A,<esc>
-nnoremap <leader>fi :e ~/.vimrc<cr>
+nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>h :help<space>
 nnoremap <leader><leader> :w<cr>
 nnoremap <leader>f<space> :let @+ = expand("%")<cr>
@@ -101,6 +101,8 @@ nnoremap <leader>% :vertical terminal<cr>
 nnoremap <leader>w <C-w>
 nnoremap _ :m .-2<cr>
 nnoremap q<leader> :q<cr>
+
+" maybe just enable hidden and :bd the current buffer?
 nnoremap <silent> <leader><esc> :bprevious<cr>:bdelete #<cr>
 nnoremap <silent> <leader>fr :browse oldfiles<cr>
 nnoremap <esc>v <C-@>"+
@@ -163,7 +165,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 nnoremap <leader>b :only <bar> :below terminal python3 %<cr><C-w><C-w>
 
-
+" todo packadd here
 function! ConfigCamelCase()
     if &rtp =~ 'CamelCaseMotion'
         map <silent> w <Plug>CamelCaseMotion_w
@@ -216,6 +218,12 @@ endfunc
 function Tapi_TerminalEdit(bufnum, arglist)
   execute 'edit' a:arglist[0]
 endfunc
+
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
 
 " Don't continue comments by default, opening or hitting return
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
