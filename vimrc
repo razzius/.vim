@@ -89,7 +89,7 @@ nnoremap <leader>f<space> :let @+ = expand("%")<cr>
 nnoremap [<leader> O<ESC>j
 nnoremap ]<leader> o<ESC>k
 nnoremap <leader>o o<esc>P
-nnoremap <leader>q :q<cr>
+nnoremap <leader>q :qa<cr>
 nnoremap <leader>Q :q!<cr>
 nnoremap <leader><return> :nohlsearch<cr>
 nnoremap <leader>r :source $MYVIMRC <bar> :echom "RELOAD"<cr>
