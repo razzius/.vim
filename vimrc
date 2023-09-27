@@ -158,9 +158,6 @@ cnoremap <Esc>f <S-Right>
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-
 " feature idea: allow writing "readonly files" after having some visual indication that the file is readonly
 
 nnoremap <leader>b :only <bar> :below terminal python3 %<cr><C-w><C-w>
@@ -242,8 +239,9 @@ packadd! vim-lsp
 " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
 
 packadd! UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 
-" Had to be after packages have added their ftdetects
+" Has to be after packages have added their ftdetects
 filetype plugin indent on
-
 syntax on
