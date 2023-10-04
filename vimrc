@@ -227,7 +227,7 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 
 
 augroup lsp_install
-  au!
+  autocmd!
   nmap <buffer> g] <plug>(lsp-definition)
   nmap <buffer> <leader>en <plug>(lsp-next-diagnostic)
   nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
