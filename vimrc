@@ -216,11 +216,11 @@ function Tapi_TerminalEdit(bufnum, arglist)
   execute 'edit' a:arglist[0]
 endfunc
 
-function! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
+packadd! trailertrash.vim
+augroup cleanup
+  autocmd!
+  autocmd BufWritePre * TrailerTrim
+augroup END
 
 " Don't continue comments by default, opening or hitting return
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
