@@ -1,0 +1,1 @@
+/home/razzi/.vim/plugins/UltiSnips/ftdetect/snippets.vim
