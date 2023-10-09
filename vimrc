@@ -126,6 +126,7 @@ tnoremap <esc>v <C-@>"+
 tnoremap <C-@><space> <C-@>:tabnext<cr>
 nnoremap <C-@><space> <C-@>:tabnext<cr>
 
+packadd! vim-surround
 vmap s S
 
 vnoremap $ $h
