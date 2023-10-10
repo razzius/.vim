@@ -8,8 +8,12 @@ let mapleader = ' '
 set autoindent
 set clipboard=unnamedplus
 set expandtab
+
+" folding
 set nofoldenable
 set foldmethod=syntax
+
+" substitution
 set gdefault
 
 " Automatically reopen a file that has been changed outside of vim
