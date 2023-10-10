@@ -260,6 +260,8 @@ let g:vim_markdown_frontmatter = 1
 set signcolumn=yes
 packadd! vim-gitgutter
 
+packadd! razzi-abbrevs
+
 " Had to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
