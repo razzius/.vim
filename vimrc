@@ -6,6 +6,7 @@ packadd! vim-gitgutter
 set signcolumn=yes
 
 highlight Search cterm=NONE ctermfg=grey ctermbg=blue
+colorscheme zaibatsu
 
 let mapleader = ' '
 set autoindent
