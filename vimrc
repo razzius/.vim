@@ -253,6 +253,14 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 " Has to be after packages have added their ftdetects
+packadd! vim-surround
+
+packadd! vim-commentary
+
+packadd! vim-markdown
+let g:vim_markdown_frontmatter = 1
+
+" Had to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
 
