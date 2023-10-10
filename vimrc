@@ -2,6 +2,9 @@ if !empty($VIM_TERMINAL)
   echom "Vim is nested in vim terminal, you don't want this"
 endif
 
+packadd! vim-gitgutter
+set signcolumn=yes
+
 highlight Search cterm=NONE ctermfg=grey ctermbg=blue
 
 let mapleader = ' '
