@@ -231,10 +231,6 @@ augroup cleanup
   autocmd BufWritePre * TrailerTrim
 augroup END
 
-" Don't continue comments by default, opening or hitting return
-autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
-
-
 augroup lsp_install
   autocmd!
   nmap <buffer> g] <plug>(lsp-definition)
@@ -259,3 +255,10 @@ let &t_EI = "\<Esc>[2 q"
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
+
+" This augroup has to be after filetype
+augroup comment_continuation
+  autocmd!
+  " Don't continue comments by default, opening or hitting return
+  autocmd BufNewFile,BufRead * setlocal formatoptions-=r formatoptions-=o
+augroup END
