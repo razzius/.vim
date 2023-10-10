@@ -2,9 +2,6 @@ if !empty($VIM_TERMINAL)
   echom "Vim is nested in vim terminal, you don't want this"
 endif
 
-packadd! vim-gitgutter
-set signcolumn=yes
-
 highlight Search cterm=NONE ctermfg=grey ctermbg=blue
 colorscheme zaibatsu
 
@@ -259,6 +256,9 @@ packadd! vim-commentary
 
 packadd! vim-markdown
 let g:vim_markdown_frontmatter = 1
+
+set signcolumn=yes
+packadd! vim-gitgutter
 
 " Had to be after packages have added their ftdetects
 filetype plugin indent on
