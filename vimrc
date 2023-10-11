@@ -262,9 +262,9 @@ let &t_EI = "\<Esc>[2 q"
 " kitty-aware keybindings
 nnoremap <C-Space>' :terminal<cr>
 nnoremap <silent> <C-Space>c :tab terminal<cr>
-" tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
 tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
 nnoremap <silent> <C-Space>j <C-w>k
+" tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
 
 packadd! vim-surround
 
@@ -278,7 +278,13 @@ packadd! vim-gitgutter
 
 packadd! razzi-abbrevs
 
-" Had to be after packages have added their ftdetects
+packadd! auto_mkdir
+
+packadd! vim-fish-syntax
+
+packadd! vim-commentary
+
+" Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
 
