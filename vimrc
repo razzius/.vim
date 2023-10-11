@@ -226,10 +226,16 @@ function Tapi_TerminalEdit(bufnum, arglist)
   execute 'edit' a:arglist[0]
 endfunc
 
-packadd! trailertrash.vim
+function! TrimTrailingWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  keeppatterns %s/$\n\+\%$//e
+  call winrestview(l:save)
+endfunction
+
 augroup cleanup
   autocmd!
-  autocmd BufWritePre * TrailerTrim
+  autocmd BufWritePre * :call TrimTrailingWhitespace()
 augroup END
 
 augroup lsp_install
