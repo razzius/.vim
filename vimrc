@@ -250,13 +250,19 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
-" Has to be after packages have added their ftdetects
+" kitty-aware keybindings
+nnoremap <C-Space>' :terminal<cr>
+nnoremap <silent> <C-Space>c :tab terminal<cr>
+" tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
+tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
+nnoremap <silent> <C-Space>j <C-w>k
+
 packadd! vim-surround
 
 packadd! vim-commentary
 
-packadd! vim-markdown
-let g:vim_markdown_frontmatter = 1
+" packadd! vim-markdown
+" let g:vim_markdown_frontmatter = 1
 
 set signcolumn=yes
 packadd! vim-gitgutter
