@@ -3,7 +3,11 @@ if !empty($VIM_TERMINAL)
 endif
 
 highlight Search cterm=NONE ctermfg=grey ctermbg=blue
-colorscheme zaibatsu
+
+try
+  colorscheme zaibatsu
+catch
+endtry
 
 let mapleader = ' '
 set autoindent
