@@ -266,8 +266,6 @@ tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
 nnoremap <silent> <C-Space>j <C-w>k
 " tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
 
-packadd! vim-surround
-
 packadd! vim-commentary
 
 " packadd! vim-markdown
