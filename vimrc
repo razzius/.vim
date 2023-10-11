@@ -52,8 +52,9 @@ set showcmd
 
 noremap <C-@><C-@> <C-w><C-w>
 noremap <C-@><leader> <C-w><C-w>
-nnoremap <C-@><Tab> gt
 nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <C-@><Tab> gt
 nnoremap <C-@><S-Tab> gT
 noremap <C-@>h <C-w>h
 noremap <C-@>j <C-w>j
