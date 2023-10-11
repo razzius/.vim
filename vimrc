@@ -95,7 +95,6 @@ nnoremap <leader>h :help<space>
 nnoremap <leader><leader> :w<cr>
 nnoremap <leader>f<space> :let @+ = expand("%")<cr>
 
-" TODO messes up when used on commented line (try it on this one :)
 nnoremap [<leader> O<ESC>j
 nnoremap ]<leader> o<ESC>k
 nnoremap <leader>o o<esc>P
