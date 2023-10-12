@@ -276,8 +276,18 @@ packadd! vim-gitgutter
 
 packadd! razzi-abbrevs
 
+function! EnsurePackage(url)
+  let name = split(a:url, "/")[-1]
+
+  if !isdirectory('pack/vendor/opt/' . name)
+    silent execute '!git clone ' . a:url . ' pack/vendor/opt/' . name
+  endif
+endfunction
+
+call EnsurePackage("https://github.com/DataWraith/auto_mkdir")
 packadd! auto_mkdir
 
+call EnsurePackage("https://github.com/khaveesh/vim-fish-syntax")
 packadd! vim-fish-syntax
 
 packadd! vim-commentary
