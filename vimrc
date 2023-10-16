@@ -135,6 +135,19 @@ tnoremap <esc>v <C-@>"+
 tnoremap <C-@><space> <C-@>:tabnext<cr>
 nnoremap <C-@><space> <C-@>:tabnext<cr>
 
+function! EnsurePackage(url)
+  let name = split(a:url, "/")[-1]
+  let target = $HOME . '/.vim/pack/vendor/opt/' . name
+
+  if !isdirectory(target)
+    silent execute '!git clone ' . a:url . " " . target
+  endif
+endfunction
+
+command! -nargs=1 Package :call EnsurePackage(<q-args>)
+
+
+Package https://github.com/tpope/vim-surround
 packadd! vim-surround
 vmap s S
 
@@ -245,11 +258,12 @@ augroup lsp_install
   nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
 augroup END
 
-packadd! vim-lsp
+" packadd! vim-lsp
 
 " doesn't work
 " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
 
+Package https://github.com/SirVer/ultisnips
 packadd! UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -266,30 +280,24 @@ tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
 nnoremap <silent> <C-Space>j <C-w>k
 " tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
 
-packadd! vim-commentary
-
 " packadd! vim-markdown
 " let g:vim_markdown_frontmatter = 1
 
 set signcolumn=yes
+
+Package https://github.com/airblade/vim-gitgutter
 packadd! vim-gitgutter
 
+Package https://git.sr.ht/~razzi/razzi-abbrevs
 packadd! razzi-abbrevs
 
-function! EnsurePackage(url)
-  let name = split(a:url, "/")[-1]
-
-  if !isdirectory('pack/vendor/opt/' . name)
-    silent execute '!git clone ' . a:url . ' pack/vendor/opt/' . name
-  endif
-endfunction
-
-call EnsurePackage("https://github.com/DataWraith/auto_mkdir")
+Package https://github.com/DataWraith/auto_mkdir
 packadd! auto_mkdir
 
-call EnsurePackage("https://github.com/khaveesh/vim-fish-syntax")
+Package https://github.com/khaveesh/vim-fish-syntax
 packadd! vim-fish-syntax
 
+Package https://github.com/tpope/vim-commentary
 packadd! vim-commentary
 
 " Has to be after packages have added their ftdetects
