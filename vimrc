@@ -77,8 +77,7 @@ nnoremap <C-c> ZZ<cr> " This helps in nested vim situations
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-@>c :tab ter<cr>
-nnoremap <C-@>' :terminal<cr>
-" nnoremap <C-@>" :terminal<cr>
+nnoremap <C-@>' :RazziTerm<cr>
 nnoremap <C-@>% :vert terminal<cr>
 nnoremap <C-@><space> <c-w><c-p>
 nnoremap <C-@>c :tab ter<cr>
@@ -103,8 +102,8 @@ nnoremap <leader>Q :q!<cr>
 nnoremap <leader><return> :nohlsearch<cr>
 nnoremap <leader>r :source $MYVIMRC <bar> :echom "RELOAD"<cr>
 nnoremap <leader><tab> :e #<cr>
-nnoremap <leader>" :terminal<cr>
-nnoremap <leader>' :terminal<cr>
+nnoremap <leader>" :RazziTerm<cr>
+nnoremap <leader>' :RazziTerm<cr>
 nnoremap <leader>v <C-v>
 nnoremap <leader>% :vertical terminal<cr>
 nnoremap <leader>w <C-w>
@@ -117,10 +116,10 @@ nnoremap <silent> <leader>fr :browse oldfiles<cr>
 nnoremap <esc>v <C-@>"+
 
 tnoremap <C-@>% <C-@>:vert terminal<cr>
-tnoremap <C-@>' <C-@>:terminal<cr>
+tnoremap <C-@>' <C-@>:RazziTerm<cr>
 
 " shouldn't really use this, but muscle memory
-tnoremap <C-@>" <C-@>:terminal<cr>
+tnoremap <C-@>" <C-@>:RazziTerm<cr>
 
 noremap <C-@>r <C-@>:source $MYVIMRC <bar> :echom "RELOAD"<cr>
 noremap <C-@>v <C-@>:tabe $MYVIMRC<cr>
@@ -145,7 +144,7 @@ function! EnsurePackage(url)
 endfunction
 
 command! -nargs=1 Package :call EnsurePackage(<q-args>)
-
+command! RazziTerm :terminal ++kill=term
 
 Package https://github.com/tpope/vim-surround
 packadd! vim-surround
@@ -274,7 +273,7 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 " kitty-aware keybindings
-nnoremap <C-Space>' :terminal<cr>
+nnoremap <C-Space>' :RazziTerm<cr>
 nnoremap <silent> <C-Space>c :tab terminal<cr>
 tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
 nnoremap <silent> <C-Space>j <C-w>k
