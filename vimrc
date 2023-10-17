@@ -299,6 +299,9 @@ packadd! vim-fish-syntax
 Package https://github.com/tpope/vim-commentary
 packadd! vim-commentary
 
+Package https://github.com/tpope/vim-fugitive
+packadd! vim-fugitive
+
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
