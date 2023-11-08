@@ -267,6 +267,12 @@ packadd! UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
+function! EditSnippets()
+  execute 'edit ~/.vim/UltiSnips/' . &filetype . '.snippets'
+endfunction
+
+nnoremap <leader>es :call EditSnippets()<cr>
+
 " Cursor styling for kitty
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
