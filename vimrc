@@ -305,6 +305,9 @@ packadd! vim-fish-syntax
 Package https://github.com/tpope/vim-commentary
 packadd! vim-commentary
 
+Package https://github.com/suy/vim-context-commentstring
+packadd! vim-context-commentstring
+
 Package https://github.com/tpope/vim-fugitive
 packadd! vim-fugitive
 
