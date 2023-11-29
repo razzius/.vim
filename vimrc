@@ -1,5 +1,6 @@
 if !empty($VIM_TERMINAL)
   echom "Vim is nested in vim terminal, you don't want this"
+  !echo -e "\033]51;[\"call\", \"Tapi_TerminalEdit\", [\"/tmp/sentinel\"]]\x07"
 endif
 
 highlight Search cterm=NONE ctermfg=grey ctermbg=blue
