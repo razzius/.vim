@@ -1,6 +1,9 @@
 if !empty($VIM_TERMINAL)
-  echom "Vim is nested in vim terminal, you don't want this"
-  !echo -e "\033]51;[\"call\", \"Tapi_TerminalEdit\", [\"/tmp/sentinel\"]]\x07"
+  let target = argv()[0]
+  let tapi_args = '["call", "Tapi_TerminalEdit", ["' . target . '"]]'
+  let escape_sequence = '\033]51;' . tapi_args . '\x07'
+  let cmd = "!echo -e '" . escape_sequence . "'"
+  execute cmd
 endif
 
 highlight Search cterm=NONE ctermfg=grey ctermbg=blue
