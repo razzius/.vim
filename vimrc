@@ -71,7 +71,7 @@ inoremap <C-]> <C-q><TAB>
 inoremap <C-k> <C-o>D
 inoremap <C-l> <C-x><C-l>
 inoremap <C-t> <esc>hxpa
-inoremap <esc>v <C-r>+
+" inoremap <esc>v <C-r>+
 
 nnoremap ^ 0
 nnoremap 0 ^
@@ -84,6 +84,8 @@ nnoremap <C-@>% :vert terminal<cr>
 nnoremap <C-@><space> <c-w><c-p>
 nnoremap <C-@>c :tab ter<cr>
 nnoremap <C-@>h <C-w>h
+nnoremap <C-@>j <C-w>j
+nnoremap <C-@>k <C-w>k
 nnoremap <C-@>l <C-w>l
 nnoremap - ddp
 nnoremap gm gM
@@ -143,13 +145,22 @@ function! EnsurePackage(url)
   if !isdirectory(target)
     silent execute '!git clone ' . a:url . " " . target
   endif
+
+  execute 'packadd! ' . name
 endfunction
 
 command! -nargs=1 Package :call EnsurePackage(<q-args>)
 command! RazziTerm :terminal ++kill=term
 
+function! TerminalInsertOnFocus()
+  if &buftype == 'terminal'
+    silent! normal i
+  endif
+endfunction
+
+autocmd BufWinEnter,WinEnter * call TerminalInsertOnFocus()
+
 Package https://github.com/tpope/vim-surround
-packadd! vim-surround
 vmap s S
 
 vnoremap $ $h
@@ -184,20 +195,15 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " feature idea: allow writing "readonly files" after having some visual indication that the file is readonly
 
-nnoremap <leader>b :only <bar> :below terminal python3 %<cr><C-w><C-w>
+" nnoremap <leader>b :only <bar> :below terminal python3 %<cr><C-w><C-w>
 
-" todo packadd here
+Package https://github.com/bkad/CamelCaseMotion
+
 function! ConfigCamelCase()
-    if &rtp =~ 'CamelCaseMotion'
-        map <silent> w <Plug>CamelCaseMotion_w
-        map <silent> b <Plug>CamelCaseMotion_b
-        map <silent> e <Plug>CamelCaseMotion_e
-        map <silent> ge <Plug>CamelCaseMotion_ge
-        sunmap w
-        sunmap b
-        sunmap e
-        sunmap ge
-    endif
+  map <silent> w <Plug>CamelCaseMotion_w
+  map <silent> b <Plug>CamelCaseMotion_b
+  map <silent> e <Plug>CamelCaseMotion_e
+  map <silent> ge <Plug>CamelCaseMotion_ge
 endfunction
 
 autocmd VimEnter * call ConfigCamelCase()
@@ -259,13 +265,12 @@ augroup lsp_install
   nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
 augroup END
 
-" packadd! vim-lsp
+Package https://github.com/prabirshrestha/vim-lsp
 
 " doesn't work
 " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
 
 Package https://github.com/SirVer/ultisnips
-packadd! UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
@@ -283,8 +288,12 @@ let &t_EI = "\<Esc>[2 q"
 " kitty-aware keybindings
 nnoremap <C-Space>' :RazziTerm<cr>
 nnoremap <silent> <C-Space>c :tab terminal<cr>
+
+tnoremap <silent> <C-Space>j <C-\><C-n><C-w>j
 tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
-nnoremap <silent> <C-Space>j <C-w>k
+
+nnoremap <silent> <C-Space>j <C-w>j
+nnoremap <silent> <C-Space>k <C-w>k
 " tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
 
 " packadd! vim-markdown
@@ -293,25 +302,22 @@ nnoremap <silent> <C-Space>j <C-w>k
 set signcolumn=yes
 
 Package https://github.com/airblade/vim-gitgutter
-packadd! vim-gitgutter
 
 Package https://git.sr.ht/~razzi/razzi-abbrevs
-packadd! razzi-abbrevs
 
 Package https://github.com/DataWraith/auto_mkdir
-packadd! auto_mkdir
 
 Package https://github.com/khaveesh/vim-fish-syntax
-packadd! vim-fish-syntax
 
 Package https://github.com/tpope/vim-commentary
-packadd! vim-commentary
 
 Package https://github.com/suy/vim-context-commentstring
-packadd! vim-context-commentstring
 
 Package https://github.com/tpope/vim-fugitive
-packadd! vim-fugitive
+
+Package https://git.sr.ht/~razzi/any-jump.vim
+
+Package https://github.com/dahu/vim-fanfingtastic
 
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
