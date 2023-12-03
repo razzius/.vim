@@ -1,9 +1,7 @@
 if !empty($VIM_TERMINAL)
-  let target = argv()[0]
-  let tapi_args = '["call", "Tapi_TerminalEdit", ["' . target . '"]]'
-  let escape_sequence = '\033]51;' . tapi_args . '\x07'
-  let cmd = "!echo -e '" . escape_sequence . "'"
-  execute cmd
+  let tapi_args = '["call", "Tapi_TerminalEdit", ["' . argv()[0] . '"]]'
+  let escaped_args = '\033]51;' . tapi_args . '\x07'
+  execute "!echo -e '" . escaped_args . "'"
 endif
 
 highlight Search cterm=NONE ctermfg=grey ctermbg=blue
@@ -90,12 +88,12 @@ nnoremap <C-@>l <C-w>l
 nnoremap - ddp
 nnoremap gm gM
 nnoremap gM gm
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 nnoremap <leader>, A,<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>h :help<space>
-nnoremap <leader><leader> :w<cr>
+nnoremap <leader><leader> :write<cr>
 nnoremap <leader>f<space> :let @+ = expand("%")<cr>
 
 nnoremap [<leader> O<ESC>j
