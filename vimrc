@@ -319,6 +319,8 @@ Package https://git.sr.ht/~razzi/any-jump.vim
 
 Package https://github.com/dahu/vim-fanfingtastic
 
+Package https://github.com/leafgarland/typescript-vim
+
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
