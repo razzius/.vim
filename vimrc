@@ -32,23 +32,30 @@ set autochdir
 " Allows hidden buffers
 set hidden
 
+" Searching
 set hlsearch
 set ignorecase
 set incsearch
+set smartcase
+
 set linebreak
+
 set mouse=a
+
 set undofile
 
 " Disable swap files, editors crashing doesn't lose much data
 set noswapfile
 
+" Indentation
 set shiftwidth=2
-set smartcase
 set smartindent
 set smarttab
+set tabstop=2
+
+" Splits
 set splitbelow
 set splitright
-set tabstop=2
 
 " Allow backspace in insert mode to go outside of the inserted region
 set backspace=indent,eol,start
