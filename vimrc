@@ -145,6 +145,8 @@ tnoremap <esc>v <C-@>"+
 tnoremap <C-@><space> <C-@>:tabnext<cr>
 nnoremap <C-@><space> <C-@>:tabnext<cr>
 
+onoremap <space> iW
+
 function! EnsurePackage(url)
   let name = split(a:url, "/")[-1]
   let target = $HOME . '/.vim/pack/vendor/opt/' . name
