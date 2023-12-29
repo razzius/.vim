@@ -148,11 +148,11 @@ nnoremap <C-@><space> <C-@>:tabnext<cr>
 onoremap <space> iW
 
 function! EnsurePackage(url)
-  let name = split(a:url, "/")[-1]
+  let name = split(a:url, '/')[-1]
   let target = $HOME . '/.vim/pack/vendor/opt/' . name
 
   if !isdirectory(target)
-    silent execute '!git clone ' . a:url . " " . target
+    silent execute '!git clone ' . a:url . ' ' . target
   endif
 
   execute 'packadd! ' . name
@@ -168,9 +168,6 @@ function! TerminalInsertOnFocus()
 endfunction
 
 autocmd BufWinEnter,WinEnter * call TerminalInsertOnFocus()
-
-Package https://github.com/tpope/vim-surround
-vmap s S
 
 vnoremap $ $h
 vnoremap ^ 0
@@ -318,9 +315,12 @@ Package https://github.com/DataWraith/auto_mkdir
 
 Package https://github.com/khaveesh/vim-fish-syntax
 
+Package https://github.com/suy/vim-context-commentstring
+
 Package https://github.com/tpope/vim-commentary
 
-Package https://github.com/suy/vim-context-commentstring
+Package https://github.com/tpope/vim-surround
+vmap s S
 
 Package https://github.com/tpope/vim-fugitive
 
