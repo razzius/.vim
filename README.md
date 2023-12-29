@@ -1,8 +1,6 @@
 # Razzi's vim config
 
-## tmux-inspired window management
-
-Test cases:
+## tmux-inspired window management test cases:
 
 ### simple terminal below
 
