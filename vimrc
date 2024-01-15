@@ -160,6 +160,7 @@ endfunction
 
 command! -nargs=1 Package :call EnsurePackage(<q-args>)
 command! RazziTerm :terminal ++kill=term
+command! RazziTermVertical :vertical terminal ++kill=term
 
 function! TerminalInsertOnFocus()
   if &buftype == 'terminal'
@@ -292,11 +293,22 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
 " kitty-aware keybindings
-nnoremap <C-Space>' :RazziTerm<cr>
+nnoremap <silent> <C-Space>' :RazziTerm<cr>
+nnoremap <silent> <C-Space>% :RazziTermVertical<cr>
 nnoremap <silent> <C-Space>c :tab terminal<cr>
 
+nnoremap <silent> <C-Space>h <C-w>h
+nnoremap <silent> <C-Space>j <C-w>j
+nnoremap <silent> <C-Space>k <C-w>k
+nnoremap <silent> <C-Space>l <C-w>l
+
+tnoremap <silent> <C-Space>h <C-\><C-n><C-w>h
 tnoremap <silent> <C-Space>j <C-\><C-n><C-w>j
 tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
+tnoremap <silent> <C-Space>l <C-\><C-n><C-w>l
+
+tnoremap <silent> <C-Space>' <C-\><C-n>:term<cr>
+tnoremap <silent> <C-Space>% <C-\><C-n>:vertical term<cr>
 
 nnoremap <silent> <C-Space>j <C-w>j
 nnoremap <silent> <C-Space>k <C-w>k
