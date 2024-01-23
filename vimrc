@@ -335,6 +335,7 @@ Package https://github.com/tpope/vim-surround
 vmap s S
 
 Package https://github.com/tpope/vim-fugitive
+nnoremap gb :Git blame<cr>
 
 Package https://github.com/tpope/vim-abolish
 
