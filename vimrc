@@ -337,6 +337,14 @@ vmap s S
 Package https://github.com/tpope/vim-fugitive
 nnoremap gb :Git blame<cr>
 
+function! RenameFile()
+  let prompt = "Rename " . expand("%") . " to: "
+  let new_name = input(prompt)
+  execute "GRename " . new_name
+endfunction
+
+nnoremap <leader>fR :call RenameFile()<cr>
+
 Package https://github.com/tpope/vim-abolish
 
 Package https://git.sr.ht/~razzi/any-jump.vim
