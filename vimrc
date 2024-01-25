@@ -78,7 +78,10 @@ inoremap <C-]> <C-q><TAB>
 inoremap <C-k> <C-o>D
 inoremap <C-l> <C-x><C-l>
 inoremap <C-t> <esc>hxpa
-" inoremap <esc>v <C-r>+
+
+" This is the default kitty symbol for Alt+v;
+" since I don't type it I am just remapping it to paste.
+inoremap ö <C-r>+
 
 nnoremap ^ 0
 nnoremap 0 ^
