@@ -353,6 +353,9 @@ Package https://github.com/dahu/vim-fanfingtastic
 
 Package https://github.com/leafgarland/typescript-vim
 
+Package https://github.com/alvan/vim-closetag
+let g:closetag_filetypes = 'html,vue'
+
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
