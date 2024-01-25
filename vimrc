@@ -103,7 +103,7 @@ nnoremap <leader>, A,<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>h :help<space>
 nnoremap <leader><leader> :write<cr>
-nnoremap <leader>f<space> :let @+ = expand("%")<cr>
+nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
 
 nnoremap [<leader> O<ESC>j
 nnoremap ]<leader> o<ESC>k
