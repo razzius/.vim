@@ -38,6 +38,9 @@ set ignorecase
 set incsearch
 set smartcase
 
+" Grepping
+set grepprg=rg\ --vimgrep\ --color=never
+set grepformat=%f:%l:%c:%m
 set linebreak
 
 set mouse=a
