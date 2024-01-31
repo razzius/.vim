@@ -362,6 +362,11 @@ Package https://github.com/leafgarland/typescript-vim
 Package https://github.com/alvan/vim-closetag
 let g:closetag_filetypes = 'html,vue'
 
+Package https://github.com/junegunn/fzf
+Package https://github.com/junegunn/fzf.vim
+nnoremap <leader>pf :Files<cr>
+nnoremap <leader>/ :Rg<cr>
+
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
