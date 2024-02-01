@@ -13,7 +13,6 @@ endtry
 
 let mapleader = ' '
 set autoindent
-set clipboard=unnamedplus
 set expandtab
 
 " folding
