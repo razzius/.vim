@@ -179,7 +179,6 @@ autocmd BufWinEnter,WinEnter * call TerminalInsertOnFocus()
 vnoremap $ $h
 vnoremap ^ 0
 vnoremap 0 ^
-vnoremap <leader>y :w pbcopy<cr>
 vnoremap ! !sort<cr>
 vnoremap y "*y
 vnoremap <leader>` v`>a```<esc>`<i```<esc>
