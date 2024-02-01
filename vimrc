@@ -340,6 +340,9 @@ Package https://github.com/tpope/vim-commentary
 
 Package https://github.com/tpope/vim-surround
 vmap s S
+nmap dss ds<space><space>
+
+Package https://github.com/tpope/vim-repeat
 
 Package https://github.com/tpope/vim-fugitive
 nnoremap gb :Git blame<cr>
