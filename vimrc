@@ -182,6 +182,7 @@ vnoremap 0 ^
 vnoremap <leader>y :w pbcopy<cr>
 vnoremap ! !sort<cr>
 vnoremap y "*y
+vnoremap <leader>` v`>a```<esc>`<i```<esc>
 
 " scroll up/down in the other window
 " only works if you have 2 windows
