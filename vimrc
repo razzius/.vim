@@ -221,17 +221,6 @@ endfunction
 
 autocmd VimEnter * call ConfigCamelCase()
 
-if executable('pylsp')
-    " pip install python-lsp-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
-        \ 'allowlist': ['python'],
-        \ })
-endif
-
-let g:lsp_document_highlight_enabled = 0
-
 if has('nvim')
   autocmd TermOpen * startinsert
   let undofolder = $HOME . '/.config/nvim/undo'
@@ -271,14 +260,24 @@ augroup cleanup
   autocmd BufWritePre * :call TrimTrailingWhitespace()
 augroup END
 
-augroup lsp_install
+Package https://github.com/prabirshrestha/vim-lsp
+
+augroup lsp_setup
   autocmd!
+  let g:lsp_document_highlight_enabled = 0
+
   nmap <buffer> g] <plug>(lsp-definition)
   nmap <buffer> <leader>en <plug>(lsp-next-diagnostic)
   nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
-augroup END
 
-Package https://github.com/prabirshrestha/vim-lsp
+  if executable('pylsp')
+    call lsp#register_server({
+          \ 'name': 'pylsp',
+          \ 'cmd': {server_info->['pylsp']},
+          \ 'allowlist': ['python'],
+          \ })
+  endif
+augroup END
 
 " doesn't work
 " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
@@ -340,6 +339,7 @@ Package https://github.com/tpope/vim-commentary
 Package https://github.com/tpope/vim-surround
 vmap s S
 nmap dss ds<space><space>
+let g:surround_{char2nr("\<cr>")} = "\n\r\n"
 
 Package https://github.com/tpope/vim-repeat
 
