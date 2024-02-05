@@ -262,22 +262,19 @@ augroup END
 
 Package https://github.com/prabirshrestha/vim-lsp
 
-augroup lsp_setup
-  autocmd!
-  let g:lsp_document_highlight_enabled = 0
+let g:lsp_document_highlight_enabled = 0
 
-  nmap <buffer> g] <plug>(lsp-definition)
-  nmap <buffer> <leader>en <plug>(lsp-next-diagnostic)
-  nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
+nmap <buffer> g] <plug>(lsp-definition)
+nmap <buffer> <leader>en <plug>(lsp-next-diagnostic)
+nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
 
-  if executable('pylsp')
-    call lsp#register_server({
-          \ 'name': 'pylsp',
-          \ 'cmd': {server_info->['pylsp']},
-          \ 'allowlist': ['python'],
-          \ })
-  endif
-augroup END
+if executable('pylsp')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'pylsp',
+        \ 'cmd': {server_info->['pylsp']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
 
 " doesn't work
 " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
