@@ -327,8 +327,6 @@ Package https://git.sr.ht/~razzi/razzi-abbrevs
 
 Package https://github.com/DataWraith/auto_mkdir
 
-Package https://github.com/khaveesh/vim-fish-syntax
-
 Package https://github.com/suy/vim-context-commentstring
 
 Package https://github.com/tpope/vim-commentary
