@@ -187,10 +187,10 @@ vnoremap <leader>` v`>a```<esc>`<i```<esc>
 nmap <c-j> <c-w>w<c-e><c-w>w
 nmap <c-k> <c-w>w<c-y><c-w>w
 
-" c-tab isn't recognized by terminal,
-" need to remap this using os hotkeys first
-" noremap <C-@><C-i> <C-@>gt
-" nnoremap <C-tab> :tabn<cr>
+" The following need to be remapped using os hotkeys for this to work
+" See https://www.reddit.com/r/neovim/comments/uc6q8h/ability_to_map_ctrl_tab_and_more/
+tnoremap <C-tab> <C-@>:tabnext<cr>
+tnoremap <C-S-tab> <C-@>:tabprevious<cr>
 
 cnoremap <C-a> <HOME>
 cnoremap <C-A> <Home>
