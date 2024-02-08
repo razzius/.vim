@@ -128,7 +128,6 @@ nnoremap q<leader> :q<cr>
 
 " maybe just enable hidden and :bd the current buffer?
 nnoremap <silent> <leader><esc> :bprevious<cr>:bdelete #<cr>
-nnoremap <silent> <leader>fr :browse oldfiles<cr>
 nnoremap <esc>v <C-@>"+
 
 tnoremap <C-@>% <C-@>:vert terminal<cr>
@@ -366,6 +365,7 @@ Package https://github.com/junegunn/fzf
 Package https://github.com/junegunn/fzf.vim
 nnoremap <leader>pf :Files<cr>
 nnoremap <leader>/ :Rg<cr>
+nnoremap <silent> <leader>fr :History<cr>
 
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
