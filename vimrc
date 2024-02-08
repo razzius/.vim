@@ -175,6 +175,8 @@ endfunction
 
 autocmd BufWinEnter,WinEnter * call TerminalInsertOnFocus()
 
+autocmd Filetype fish setlocal shiftwidth=4
+
 vnoremap $ $h
 vnoremap ^ 0
 vnoremap 0 ^
