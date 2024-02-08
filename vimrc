@@ -371,6 +371,10 @@ nmap y <Plug>OSCYankOperator
 onoremap y :normal val<cr>
 vmap y <Plug>OSCYankVisual
 
+Package https://github.com/kana/vim-textobj-user
+Package https://github.com/kana/vim-textobj-line
+Package https://github.com/kana/vim-textobj-entire
+
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
