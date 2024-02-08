@@ -180,7 +180,6 @@ vnoremap $ $h
 vnoremap ^ 0
 vnoremap 0 ^
 vnoremap ! !sort<cr>
-vnoremap y "*y
 vnoremap <leader>` v`>a```<esc>`<i```<esc>
 
 " scroll up/down in the other window
@@ -366,6 +365,11 @@ Package https://github.com/junegunn/fzf.vim
 nnoremap <leader>pf :Files<cr>
 nnoremap <leader>/ :Rg<cr>
 nnoremap <silent> <leader>fr :History<cr>
+
+Package https://github.com/ojroques/vim-oscyank
+nmap y <Plug>OSCYankOperator
+onoremap y :normal val<cr>
+vmap y <Plug>OSCYankVisual
 
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
