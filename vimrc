@@ -368,10 +368,17 @@ nnoremap <leader>pf :Files<cr>
 nnoremap <leader>/ :Rg<cr>
 nnoremap <silent> <leader>fr :History<cr>
 
-Package https://github.com/ojroques/vim-oscyank
-nmap y <Plug>OSCYankOperator
-onoremap y :normal val<cr>
-vmap y <Plug>OSCYankVisual
+if !empty($WSL_DISTRO_NAME)
+  set clipboard=unnamedplus
+
+  Package https://github.com/ojroques/vim-oscyank
+  nmap y <Plug>OSCYankOperator
+
+  " TODO leaves out newline
+  onoremap y :normal val<cr>
+
+  vmap y <Plug>OSCYankVisual
+endif
 
 Package https://github.com/kana/vim-textobj-user
 Package https://github.com/kana/vim-textobj-line
