@@ -368,6 +368,12 @@ nnoremap <leader>pf :Files<cr>
 nnoremap <leader>/ :Rg<cr>
 nnoremap <silent> <leader>fr :History<cr>
 
+if has("clipboard")
+  set clipboard=unnamedplus
+  nnoremap y "*y
+  vnoremap y "*y
+endif
+
 if !empty($WSL_DISTRO_NAME)
   set clipboard=unnamedplus
 
