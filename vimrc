@@ -272,6 +272,8 @@ nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
 
 Package https://github.com/Vimjas/vim-python-pep8-indent
 
+Package https://github.com/kana/vim-smartinput
+
 if executable('pylsp')
   autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'pylsp',
