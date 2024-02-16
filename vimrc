@@ -270,6 +270,8 @@ nmap <buffer> g] <plug>(lsp-definition)
 nmap <buffer> <leader>en <plug>(lsp-next-diagnostic)
 nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
 
+Package https://github.com/Vimjas/vim-python-pep8-indent
+
 if executable('pylsp')
   autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'pylsp',
@@ -364,6 +366,7 @@ let g:closetag_filetypes = 'html,vue'
 
 Package https://github.com/junegunn/fzf
 Package https://github.com/junegunn/fzf.vim
+
 nnoremap <leader>pf :Files<cr>
 nnoremap <leader>/ :Rg<cr>
 nnoremap <silent> <leader>fr :History<cr>
