@@ -105,6 +105,7 @@ nnoremap gM gm
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
+nnoremap <silent> Q @q
 
 nnoremap <leader>, A,<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
