@@ -376,20 +376,6 @@ nnoremap <silent> <leader>fr :History<cr>
 
 if has("clipboard")
   set clipboard=unnamedplus
-  nnoremap y "*y
-  vnoremap y "*y
-endif
-
-if !empty($WSL_DISTRO_NAME)
-  set clipboard=unnamedplus
-
-  Package https://github.com/ojroques/vim-oscyank
-  nmap y <Plug>OSCYankOperator
-
-  " TODO leaves out newline
-  onoremap y :normal val<cr>
-
-  vmap y <Plug>OSCYankVisual
 endif
 
 Package https://github.com/kana/vim-textobj-user
