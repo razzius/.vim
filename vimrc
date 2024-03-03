@@ -375,7 +375,7 @@ nnoremap <leader>/ :Rg<cr>
 nnoremap <silent> <leader>fr :History<cr>
 
 if has("clipboard")
-  set clipboard=unnamedplus
+  set clipboard=unnamed,unnamedplus
 endif
 
 Package https://github.com/kana/vim-textobj-user
