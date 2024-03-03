@@ -223,10 +223,6 @@ autocmd VimEnter * call ConfigCamelCase()
 
 if has('nvim')
   autocmd TermOpen * startinsert
-  let undofolder = $HOME . '/.config/nvim/undo'
-  if !isdirectory(undofolder)
-    call mkdir(undofolder, "p", 0700)
-  endif
   set undodir=~/.config/nvim/undo
 endif
 
@@ -234,10 +230,11 @@ if !has('nvim')
   set termwinkey=<C-@>
   set autoshelldir
 
-  if !isdirectory($HOME . "/.vim/undo")
-    call mkdir($HOME . "/.vim/undo", "p", 0700)
-  endif
   set undodir=~/.vim/undo
+endif
+
+if !isdirectory(&undodir)
+  call mkdir(&undodir, "p", 0700)
 endif
 
 function Tapi_TabEdit(bufnum, arglist)
