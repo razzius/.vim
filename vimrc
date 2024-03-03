@@ -323,8 +323,8 @@ nnoremap <silent> <C-Space>k <C-w>k
 " packadd! vim-markdown
 " let g:vim_markdown_frontmatter = 1
 
+" Set signcolumn when gitgutter loads there's no refresh
 set signcolumn=yes
-
 Package https://github.com/airblade/vim-gitgutter
 
 Package https://git.sr.ht/~razzi/razzi-abbrevs
