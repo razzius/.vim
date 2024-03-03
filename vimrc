@@ -110,8 +110,8 @@ nnoremap <leader>h :help<space>
 nnoremap <leader><leader> :write<cr>
 nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
 
-nnoremap [<leader> O<ESC>j
-nnoremap ]<leader> o<ESC>k
+nnoremap [<leader> O<esc>j
+nnoremap ]<leader> o<esc>k
 nnoremap <leader>o o<esc>P
 nnoremap <leader>q :qa<cr>
 nnoremap <leader>Q :q!<cr>
