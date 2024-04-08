@@ -376,6 +376,8 @@ Package https://github.com/kana/vim-textobj-user
 Package https://github.com/kana/vim-textobj-line
 Package https://github.com/kana/vim-textobj-entire
 
+let g:html_indent_style1 = "inc"
+
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
