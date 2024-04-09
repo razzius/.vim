@@ -75,8 +75,8 @@ noremap <C-@>l <C-w>l
 
 inoremap <C-]> <C-q><TAB>
 inoremap <C-k> <C-o>D
-inoremap <C-l> <C-x><C-l>
 inoremap <C-t> <esc>hxpa
+inoremap <C-l> <esc>lxep
 
 " This is the default kitty symbol for Alt+v;
 " since I don't type it I am just remapping it to paste.
@@ -126,8 +126,7 @@ nnoremap <leader>w <C-w>
 nnoremap _ :m .-2<cr>
 nnoremap q<leader> :q<cr>
 
-" maybe just enable hidden and :bd the current buffer?
-nnoremap <silent> <leader><esc> :bprevious<cr>:bdelete #<cr>
+nnoremap <silent> <leader><esc> :bdelete<cr>
 nnoremap <esc>v <C-@>"+
 
 tnoremap <C-@>% <C-@>:vert terminal<cr>
@@ -163,6 +162,7 @@ function! EnsurePackage(url)
 endfunction
 
 command! -nargs=1 Package :call EnsurePackage(<q-args>)
+
 command! RazziTerm :terminal ++kill=term
 command! RazziTermVertical :vertical terminal ++kill=term
 
@@ -375,6 +375,8 @@ endif
 Package https://github.com/kana/vim-textobj-user
 Package https://github.com/kana/vim-textobj-line
 Package https://github.com/kana/vim-textobj-entire
+
+Package https://github.com/farmergreg/vim-lastplace
 
 let g:html_indent_style1 = "inc"
 
