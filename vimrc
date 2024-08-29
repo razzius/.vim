@@ -319,8 +319,6 @@ nnoremap <silent> <C-Space>j <C-w>j
 nnoremap <silent> <C-Space>k <C-w>k
 " tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
 
-highlight link markdownError Normal
-
 " Set signcolumn when gitgutter loads there's no refresh
 set signcolumn=yes
 Package https://github.com/airblade/vim-gitgutter
@@ -384,6 +382,8 @@ let g:html_indent_style1 = "inc"
 " Has to be after packages have added their ftdetects
 filetype plugin indent on
 syntax on
+
+highlight link markdownError Normal
 
 " This augroup has to be after filetype
 augroup comment_continuation
