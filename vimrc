@@ -317,8 +317,7 @@ nnoremap <silent> <C-Space>j <C-w>j
 nnoremap <silent> <C-Space>k <C-w>k
 " tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
 
-" packadd! vim-markdown
-" let g:vim_markdown_frontmatter = 1
+highlight link markdownError Normal
 
 " Set signcolumn when gitgutter loads there's no refresh
 set signcolumn=yes
