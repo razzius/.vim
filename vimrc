@@ -85,7 +85,6 @@ cnoremap ö <C-r>+
 
 nnoremap ^ 0
 nnoremap 0 ^
-nnoremap <C-c> ZZ<cr> " This helps in nested vim situations
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-@>c :tab ter<cr>
