@@ -62,6 +62,8 @@ set backspace=indent,eol,start
 " Show partially-entered commands
 set showcmd
 
+map gf :e <cfile><cr>
+
 noremap <C-@><C-@> <C-w><C-w>
 noremap <C-@><leader> <C-w><C-w>
 nnoremap <Tab> gt
