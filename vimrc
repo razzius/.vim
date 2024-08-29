@@ -81,6 +81,7 @@ inoremap <C-l> <esc>lxep
 " This is the default kitty symbol for Alt+v;
 " since I don't type it I am just remapping it to paste.
 inoremap ö <C-r>+
+cnoremap ö <C-r>+
 
 nnoremap ^ 0
 nnoremap 0 ^
