@@ -4,8 +4,6 @@ if !empty($VIM_TERMINAL)
   execute "!echo -e '" . escaped_args . "'"
 endif
 
-highlight Search cterm=NONE ctermfg=grey ctermbg=blue
-
 try
   colorscheme zaibatsu
 catch
