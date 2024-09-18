@@ -375,6 +375,8 @@ Package https://github.com/kana/vim-textobj-entire
 
 Package https://github.com/farmergreg/vim-lastplace
 
+Package https://github.com/jaawerth/fennel.vim
+
 let g:html_indent_style1 = "inc"
 
 " Has to be after packages have added their ftdetects
