@@ -106,6 +106,7 @@ nnoremap <silent> Q @q
 
 nnoremap <leader>, A,<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
+nnoremap <leader>fs :w<cr>
 nnoremap <leader>h :help<space>
 nnoremap <leader><leader> :write<cr>
 nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
