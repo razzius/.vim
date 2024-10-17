@@ -60,12 +60,22 @@ set backspace=indent,eol,start
 " Show partially-entered commands
 set showcmd
 
-map gf :e <cfile><cr>
+nnoremap - ddp
+nnoremap _ :m .-2<cr>
+nnoremap 0 ^
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <S-Tab> gT
+nnoremap <Tab> gt
+nnoremap ^ 0
+nnoremap gf :e <cfile><cr>
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
+nnoremap <silent> Q @q
 
 noremap <C-@><C-@> <C-w><C-w>
 noremap <C-@><leader> <C-w><C-w>
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
 nnoremap <C-@><Tab> gt
 nnoremap <C-@><S-Tab> gT
 noremap <C-@>h <C-w>h
@@ -80,15 +90,16 @@ inoremap <C-l> <esc>lxep
 
 " This is the default kitty symbol for Alt+v;
 " since I don't type it I am just remapping it to paste.
+" It would be better to remap this on the kitty side tho.
 inoremap ö <C-r>+
 cnoremap ö <C-r>+
 
-nnoremap ^ 0
-nnoremap 0 ^
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <C-@>c :tab ter<cr>
+nnoremap <C-@>c :tab terminal<cr>
 nnoremap <C-@>' :RazziTerm<cr>
+
+" For some reason <C-@>" doesn't work
+nnoremap <C-Space>" :RazziTerm<cr>
+
 nnoremap <C-@>% :vert terminal<cr>
 nnoremap <C-@><space> <c-w><c-p>
 nnoremap <C-@>c :tab ter<cr>
@@ -96,13 +107,12 @@ nnoremap <C-@>h <C-w>h
 nnoremap <C-@>j <C-w>j
 nnoremap <C-@>k <C-w>k
 nnoremap <C-@>l <C-w>l
-nnoremap - ddp
-nnoremap gm gM
-nnoremap gM gm
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
-nnoremap <silent> Q @q
+
+vnoremap $ $h
+vnoremap ^ 0
+vnoremap 0 ^
+vnoremap ! !sort<cr>
+vnoremap <leader>` v`>a```<esc>`<i```<esc>
 
 nnoremap <leader>, A,<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
@@ -124,30 +134,10 @@ nnoremap <leader>' :RazziTerm<cr>
 nnoremap <leader>v <C-v>
 nnoremap <leader>% :vertical terminal<cr>
 nnoremap <leader>w <C-w>
-nnoremap _ :m .-2<cr>
 nnoremap q<leader> :q<cr>
 
 nnoremap <silent> <leader><esc> :bdelete<cr>
 nnoremap <esc>v <C-@>"+
-
-tnoremap <C-@>% <C-@>:vert terminal<cr>
-tnoremap <C-@>' <C-@>:RazziTerm<cr>
-
-" shouldn't really use this, but muscle memory
-tnoremap <C-@>" <C-@>:RazziTerm<cr>
-
-noremap <C-@>r <C-@>:source $MYVIMRC <bar> :echom "RELOAD"<cr>
-noremap <C-@>v <C-@>:tabe $MYVIMRC<cr>
-
-tnoremap <C-@><C-i> <C-@>gt
-tnoremap <C-@>[ <C-@>N
-tnoremap <C-@>c <C-@>:tab terminal<cr>
-tnoremap <C-[> <C-@>N
-tnoremap <esc>v <C-@>"+
-
-" TODO implement tab stack
-tnoremap <C-@><space> <C-@>:tabnext<cr>
-nnoremap <C-@><space> <C-@>:tabnext<cr>
 
 onoremap <space> iW
 
@@ -177,21 +167,10 @@ autocmd BufWinEnter,WinEnter * call TerminalInsertOnFocus()
 
 autocmd Filetype fish setlocal shiftwidth=4
 
-vnoremap $ $h
-vnoremap ^ 0
-vnoremap 0 ^
-vnoremap ! !sort<cr>
-vnoremap <leader>` v`>a```<esc>`<i```<esc>
-
 " scroll up/down in the other window
 " only works if you have 2 windows
 nmap <c-j> <c-w>w<c-e><c-w>w
 nmap <c-k> <c-w>w<c-y><c-w>w
-
-" The following need to be remapped using os hotkeys for this to work
-" See https://www.reddit.com/r/neovim/comments/uc6q8h/ability_to_map_ctrl_tab_and_more/
-tnoremap <C-tab> <C-@>:tabnext<cr>
-tnoremap <C-S-tab> <C-@>:tabprevious<cr>
 
 cnoremap <C-a> <HOME>
 cnoremap <C-A> <Home>
@@ -235,7 +214,7 @@ if !has('nvim')
 endif
 
 if !isdirectory(&undodir)
-  call mkdir(&undodir, "p", 0700)
+  call mkdir(&undodir, "p", 0o700)
 endif
 
 function Tapi_TabEdit(bufnum, arglist)
@@ -300,25 +279,52 @@ let &t_EI = "\<Esc>[2 q"
 nnoremap <silent> <C-Space>' :RazziTerm<cr>
 nnoremap <silent> <C-Space>% :RazziTermVertical<cr>
 nnoremap <silent> <C-Space>c :tab terminal<cr>
+nnoremap <silent> <C-Space><Space> g<tab>
+nnoremap <C-@><space> g<tab>
+nnoremap <C-@>n gt
+nnoremap <C-@>p gT
 
 nnoremap <silent> <C-Space>h <C-w>h
 nnoremap <silent> <C-Space>j <C-w>j
 nnoremap <silent> <C-Space>k <C-w>k
 nnoremap <silent> <C-Space>l <C-w>l
 
-tnoremap <silent> <C-Space>h <C-\><C-n><C-w>h
-tnoremap <silent> <C-Space>j <C-\><C-n><C-w>j
-tnoremap <silent> <C-Space>k <C-\><C-n><C-w>k
-tnoremap <silent> <C-Space>l <C-\><C-n><C-w>l
+nnoremap <C-@>" <C-@>:RazziTerm<cr>
 
-tnoremap <silent> <C-Space>' <C-\><C-n>:term<cr>
-tnoremap <silent> <C-Space>% <C-\><C-n>:vertical term<cr>
+tnoremap <C-Space>% <C-@>:vert terminal<cr>
+tnoremap <C-Space>' <C-@>:RazziTerm<cr>
+tnoremap <C-Space>" <C-@>:RazziTerm<cr>
+tnoremap <C-Space>h <C-@>:wincmd h<cr>
+tnoremap <C-Space>j <C-@>:wincmd j<cr>
+tnoremap <C-Space>k <C-@>:wincmd k<cr>
+tnoremap <C-Space>l <C-@>:wincmd l<cr>
+tnoremap <C-Space>% <C-@>:vert terminal<cr>
 
-nnoremap <silent> <C-Space>j <C-w>j
-nnoremap <silent> <C-Space>k <C-w>k
-" tnoremap <silent> <C-Space><space> <C-w>:tabp<cr>
+" shouldn't really use this, but muscle memory
+tnoremap <C-@>" <C-@>:RazziTerm<cr>
 
-" Set signcolumn when gitgutter loads there's no refresh
+tnoremap <C-@><C-i> <C-@>gt
+tnoremap <C-@>[ <C-@>N
+tnoremap <C-@>c <C-@>:tab terminal<cr>
+tnoremap <C-[> <C-@>N
+tnoremap <esc>v <C-@>"+
+
+tnoremap <C-Space><space> <C-@>g<tab>
+tnoremap <C-Space>n <C-@>:tabnext<cr>
+tnoremap <C-Space>p <C-@>:tabprev<cr>
+
+nnoremap <C-Space>n :tabnext<cr>
+nnoremap <C-Space>p :tabprev<cr>
+
+" The following need to be remapped using os hotkeys for this to work
+" See https://www.reddit.com/r/neovim/comments/uc6q8h/ability_to_map_ctrl_tab_and_more/
+tnoremap <C-Tab> <C-@>:tabnext<cr>
+tnoremap <C-S-tab> <C-@>:tabprevious<cr>
+
+nnoremap <C-Tab> :tabnext<cr>
+nnoremap <C-S-Tab> :tabprev<cr>
+
+" Set signcolumn so when gitgutter loads there's no refresh
 set signcolumn=yes
 Package https://github.com/airblade/vim-gitgutter
 
