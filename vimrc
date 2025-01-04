@@ -60,6 +60,8 @@ set backspace=indent,eol,start
 " Show partially-entered commands
 set showcmd
 
+" Enable spell checking
+set spell spelllang=en_us
 nnoremap - ddp
 nnoremap _ :m .-2<cr>
 nnoremap 0 ^
