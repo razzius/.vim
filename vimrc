@@ -117,6 +117,7 @@ vnoremap ! !sort<cr>
 vnoremap <leader>` v`>a```<esc>`<i```<esc>
 
 nnoremap <leader>, A,<esc>
+nnoremap <leader>; A;<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>h :help<space>
@@ -300,7 +301,7 @@ tnoremap <C-Space>h <C-@>:wincmd h<cr>
 tnoremap <C-Space>j <C-@>:wincmd j<cr>
 tnoremap <C-Space>k <C-@>:wincmd k<cr>
 tnoremap <C-Space>l <C-@>:wincmd l<cr>
-tnoremap <C-Space>% <C-@>:vert terminal<cr>
+tnoremap <C-Space>\\ <C-@>:vert terminal<cr>
 
 " shouldn't really use this, but muscle memory
 tnoremap <C-@>" <C-@>:RazziTerm<cr>
