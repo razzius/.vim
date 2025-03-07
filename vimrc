@@ -394,6 +394,7 @@ filetype plugin indent on
 syntax on
 
 highlight link markdownError Normal
+let g:markdown_folding = 1
 
 " This augroup has to be after filetype
 augroup comment_continuation
