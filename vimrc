@@ -87,7 +87,6 @@ noremap <C-@>l <C-w>l
 
 inoremap <C-]> <C-q><TAB>
 inoremap <C-k> <C-o>D
-inoremap <C-t> <esc>hxpa
 inoremap <C-l> <esc>lxep
 
 " This is the default kitty symbol for Alt+v;
@@ -181,7 +180,6 @@ cnoremap <C-B> <Left>
 cnoremap <C-F> <Right>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ?
 cnoremap <C-k> <Left>
-cnoremap <C-t> <C-f>$Xp<C-c><right><C-l>
 cnoremap <C-up> <C-f>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
@@ -378,6 +376,44 @@ nnoremap <silent> <leader>fr :History<cr>
 if has("clipboard")
   set clipboard=unnamed,unnamedplus
 endif
+
+" taken from https://www.reddit.com/r/vim/comments/6llcp0/transpose_characters/
+inoremap <expr> <C-T> TransposeChars()
+cnoremap <expr> <C-T> TransposeChars()
+
+func! TransposeChars()
+  let l:col  = CursorPos()
+  let l:line = CursorLine()
+
+  if l:col == 1
+    return ''
+  elseif l:col > len(l:line)
+    return TransposePrecedingChars(l:line, l:col)
+  else
+    return TransposeSurroundingChars(l:line, l:col)
+  endif
+endf
+
+func! CursorPos()
+  return mode() == 'c' ? getcmdpos() : col('.')
+endf
+
+func! CursorLine()
+  return mode() == 'c' ? getcmdline() : getline('.')
+endf
+
+func! TransposePrecedingChars(line, col)
+  if a:col > 2
+    return "\<BS>\<BS>" . a:line[ a:col-2 ] . a:line[ a:col-3 ]
+  else
+    return mode() == 'i' ? "\<C-G>U\<Left>" : "\<Left>"
+  end
+endf
+
+func! TransposeSurroundingChars(line, col)
+  return "\<BS>\<Del>" . a:line[ a:col-1 ] . a:line[ a:col-2 ]
+endf
+
 
 Package https://github.com/kana/vim-textobj-user
 Package https://github.com/kana/vim-textobj-line
