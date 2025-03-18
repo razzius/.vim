@@ -1,5 +1,9 @@
 # Razzi's vim config
 
+```
+git clone git@git.sr.ht:~razzi/.vim ~/.vim
+```
+
 ## tmux-inspired window management test cases:
 
 ### simple terminal below
