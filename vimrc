@@ -113,10 +113,12 @@ vnoremap $ $h
 vnoremap ^ 0
 vnoremap 0 ^
 vnoremap ! !sort<cr>
+vmap ` s`
 vnoremap <leader>` v`>a```<esc>`<i```<esc>
 
 nnoremap <leader>, A,<esc>
 nnoremap <leader>; A;<esc>
+nnoremap <leader>` o```<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>h :help<space>
@@ -191,16 +193,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " nnoremap <leader>b :only <bar> :below terminal python3 %<cr><C-w><C-w>
 
-Package https://github.com/bkad/CamelCaseMotion
-
-function! ConfigCamelCase()
-  map <silent> w <Plug>CamelCaseMotion_w
-  map <silent> b <Plug>CamelCaseMotion_b
-  map <silent> e <Plug>CamelCaseMotion_e
-  map <silent> ge <Plug>CamelCaseMotion_ge
-endfunction
-
-autocmd VimEnter * call ConfigCamelCase()
+Package https://github.com/chaoren/vim-wordmotion
 
 if has('nvim')
   autocmd TermOpen * startinsert
