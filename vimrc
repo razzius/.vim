@@ -150,7 +150,7 @@ function! EnsurePackage(url)
   let target = $HOME . '/.vim/pack/vendor/opt/' . name
 
   if !isdirectory(target)
-    silent execute '!git clone ' . a:url . ' ' . target
+    silent execute '!git clone --depth=1 ' . a:url . ' ' . target
   endif
 
   execute 'packadd! ' . name
