@@ -434,3 +434,8 @@ augroup comment_continuation
   " Don't continue comments by default, opening or hitting return
   autocmd BufNewFile,BufRead * setlocal formatoptions-=r formatoptions-=o
 augroup END
+
+augroup switch_windows
+  autocmd!
+  autocmd BufLeave,FocusLost * silent! wall
+augroup END
