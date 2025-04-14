@@ -6,7 +6,7 @@ endif
 
 try
   colorscheme zaibatsu
-  autocmd ColorScheme zaibatsu highlight MatchParen ctermfg=white
+  autocmd ColorScheme zaibatsu highlight MatchParen ctermfg=white ctermbg=NONE cterm=NONE
 catch
 endtry
 
