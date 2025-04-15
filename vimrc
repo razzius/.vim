@@ -287,6 +287,7 @@ nnoremap <silent> <C-Space>k <C-w>k
 nnoremap <silent> <C-Space>l <C-w>l
 
 nnoremap <C-@>" <C-@>:RazziTerm<cr>
+nnoremap <C-Space>% vert terminal<cr>
 
 tnoremap <C-Space>% <C-@>:vert terminal<cr>
 tnoremap <C-Space>' <C-@>:RazziTerm<cr>
