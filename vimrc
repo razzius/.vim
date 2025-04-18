@@ -356,7 +356,7 @@ Package https://github.com/tpope/vim-abolish
 
 Package https://git.sr.ht/~razzi/any-jump.vim
 
-Package https://github.com/dahu/vim-fanfingtastic
+Package https://github.com/chrisbra/improvedft
 
 Package https://github.com/leafgarland/typescript-vim
 
