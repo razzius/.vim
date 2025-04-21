@@ -127,6 +127,7 @@ nnoremap <leader>fs :w<cr>
 nnoremap <leader>h :help<space>
 nnoremap <leader><leader> :write<cr>
 nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
+nnoremap <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
 
 nnoremap [<leader> O<esc>j
 nnoremap ]<leader> o<esc>k
