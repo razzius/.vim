@@ -339,6 +339,7 @@ Package https://github.com/tpope/vim-surround
 vmap s S
 nmap dss ds<space><space>
 let g:surround_{char2nr("\<cr>")} = "\n\r\n"
+let g:surround_{char2nr("")} = ""
 
 Package https://github.com/tpope/vim-repeat
 
