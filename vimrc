@@ -125,29 +125,28 @@ nnoremap <leader>; A;<esc>
 nnoremap <leader>` o```<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>fs :w<cr>
-nnoremap <leader>h :help<space>
-nnoremap <leader>l :edit<cr>
+nnoremap <leader>" :RazziTerm<cr>
+nnoremap <leader>% :vertical terminal<cr>
+nnoremap <leader>' :RazziTerm<cr>
 nnoremap <leader><leader> :write<cr>
+nnoremap <leader><return> :nohlsearch<cr>
+nnoremap <leader><tab> :e #<cr>
+nnoremap <leader>Q :q!<cr>
 nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
 nnoremap <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
-nnoremap [<leader> O<esc>j
-nnoremap ]<leader> o<esc>k
+nnoremap <leader>h :help<space>
+nnoremap <leader>l :edit<cr>
+nnoremap <leader>m :messages<cr>
 nnoremap <leader>o o<esc>P
 nnoremap <leader>q :qa<cr>
-nnoremap <leader>Q :q!<cr>
-nnoremap <leader><return> :nohlsearch<cr>
 nnoremap <leader>r :source $MYVIMRC <bar> :echom "RELOAD"<cr>
-nnoremap <leader><tab> :e #<cr>
-nnoremap <leader>" :RazziTerm<cr>
-nnoremap <leader>' :RazziTerm<cr>
 nnoremap <leader>v <C-v>
-nnoremap <leader>m :messages<cr>
-nnoremap <leader>% :vertical terminal<cr>
 nnoremap <leader>w <C-w>
+nnoremap [<leader> O<esc>j
+nnoremap ]<leader> o<esc>k
 nnoremap q<leader> :q<cr>
 
 nnoremap <silent> <leader><esc> :bdelete<cr>
-nnoremap <esc>v <C-@>"+
 
 onoremap <space> iW
 
@@ -177,37 +176,19 @@ autocmd BufWinEnter,WinEnter * call TerminalInsertOnFocus()
 
 autocmd Filetype fish setlocal shiftwidth=4
 
-" scroll up/down in the other window
-" only works if you have 2 windows
-nmap <c-j> <c-w>w<c-e><c-w>w
-nmap <c-k> <c-w>w<c-y><c-w>w
-
-cnoremap <C-a> <HOME>
-cnoremap <C-A> <Home>
-cnoremap <C-B> <Left>
-cnoremap <C-F> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
 cnoremap <C-d> <del>
-cnoremap <C-k> <C-\>e getcmdpos() == 1 ?
-cnoremap <C-k> <Left>
-cnoremap <C-up> <C-f>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-      \ '' : getcmdline()[:getcmdpos()-2]<cr>
+cnoremap <C-f> <Right>
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" feature idea: allow writing "readonly files" after having some visual indication that the file is readonly
-
-" nnoremap <leader>b :only <bar> :below terminal python3 %<cr><C-w><C-w>
 
 Package https://github.com/chaoren/vim-wordmotion
 
 if has('nvim')
   autocmd TermOpen * startinsert
   set undodir=~/.config/nvim/undo
-endif
-
-if !has('nvim')
+else
   set termwinkey=<C-@>
   set autoshelldir
 
@@ -320,17 +301,15 @@ nnoremap <C-Space>p :tabprev<cr>
 
 " The following need to be remapped using os hotkeys for this to work
 " See https://www.reddit.com/r/neovim/comments/uc6q8h/ability_to_map_ctrl_tab_and_more/
-tnoremap <C-Tab> <C-@>:tabnext<cr>
-tnoremap <C-S-tab> <C-@>:tabprevious<cr>
-
-nnoremap <C-Tab> :tabnext<cr>
-nnoremap <C-S-Tab> :tabprev<cr>
+noremap <C-Tab> <C-@>:tabnext<cr>
+noremap <C-S-tab> <C-@>:tabprevious<cr>
 
 " Set signcolumn so when gitgutter loads there's no refresh
 set signcolumn=yes
 Package https://github.com/airblade/vim-gitgutter
 
 Package https://git.sr.ht/~razzi/razzi-abbrevs
+Package https://git.sr.ht/~razzi/transpose-chars
 
 Package https://github.com/DataWraith/auto_mkdir
 
@@ -340,7 +319,9 @@ Package https://github.com/tpope/vim-commentary
 
 Package https://github.com/tpope/vim-surround
 vmap s S
+vmap s<space> S<space><space>
 nmap dss ds<space><space>
+
 let g:surround_{char2nr("\<cr>")} = "\n\r\n"
 let g:surround_{char2nr("")} = ""
 
@@ -357,6 +338,10 @@ endfunction
 
 nnoremap <leader>fR :call RenameFile()<cr>
 
+if has("clipboard")
+  set clipboard=unnamed,unnamedplus
+endif
+
 Package https://github.com/tpope/vim-abolish
 
 Package https://git.sr.ht/~razzi/any-jump.vim
@@ -367,55 +352,6 @@ Package https://github.com/leafgarland/typescript-vim
 
 Package https://github.com/alvan/vim-closetag
 let g:closetag_filetypes = 'html,vue'
-
-Package https://github.com/junegunn/fzf
-Package https://github.com/junegunn/fzf.vim
-
-nnoremap <leader>pf :Files<cr>
-nnoremap <leader>/ :Rg<cr>
-nnoremap <silent> <leader>fr :History<cr>
-
-if has("clipboard")
-  set clipboard=unnamed,unnamedplus
-endif
-
-" taken from https://www.reddit.com/r/vim/comments/6llcp0/transpose_characters/
-inoremap <expr> <C-T> TransposeChars()
-cnoremap <expr> <C-T> TransposeChars()
-
-func! TransposeChars()
-  let l:col  = CursorPos()
-  let l:line = CursorLine()
-
-  if l:col == 1
-    return ''
-  elseif l:col > len(l:line)
-    return TransposePrecedingChars(l:line, l:col)
-  else
-    return TransposeSurroundingChars(l:line, l:col)
-  endif
-endf
-
-func! CursorPos()
-  return mode() == 'c' ? getcmdpos() : col('.')
-endf
-
-func! CursorLine()
-  return mode() == 'c' ? getcmdline() : getline('.')
-endf
-
-func! TransposePrecedingChars(line, col)
-  if a:col > 2
-    return "\<BS>\<BS>" . a:line[ a:col-2 ] . a:line[ a:col-3 ]
-  else
-    return mode() == 'i' ? "\<C-G>U\<Left>" : "\<Left>"
-  end
-endf
-
-func! TransposeSurroundingChars(line, col)
-  return "\<BS>\<Del>" . a:line[ a:col-1 ] . a:line[ a:col-2 ]
-endf
-
 
 Package https://github.com/kana/vim-textobj-user
 Package https://github.com/kana/vim-textobj-line
