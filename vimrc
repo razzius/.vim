@@ -65,6 +65,7 @@ set showcmd
 
 " Enable spell checking
 set spell spelllang=en_us
+
 nnoremap - ddp
 nnoremap _ :m .-2<cr>
 nnoremap 0 ^
@@ -125,10 +126,10 @@ nnoremap <leader>` o```<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>h :help<space>
+nnoremap <leader>l :edit<cr>
 nnoremap <leader><leader> :write<cr>
 nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
 nnoremap <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
-
 nnoremap [<leader> O<esc>j
 nnoremap ]<leader> o<esc>k
 nnoremap <leader>o o<esc>P
@@ -140,6 +141,7 @@ nnoremap <leader><tab> :e #<cr>
 nnoremap <leader>" :RazziTerm<cr>
 nnoremap <leader>' :RazziTerm<cr>
 nnoremap <leader>v <C-v>
+nnoremap <leader>m :messages<cr>
 nnoremap <leader>% :vertical terminal<cr>
 nnoremap <leader>w <C-w>
 nnoremap q<leader> :q<cr>
@@ -184,6 +186,7 @@ cnoremap <C-a> <HOME>
 cnoremap <C-A> <Home>
 cnoremap <C-B> <Left>
 cnoremap <C-F> <Right>
+cnoremap <C-d> <del>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ?
 cnoremap <C-k> <Left>
 cnoremap <C-up> <C-f>
