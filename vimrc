@@ -80,6 +80,23 @@ nnoremap <silent> k gk
 nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
 nnoremap <silent> Q @q
 
+function! RazziChange()
+  " Ok ideally this would allow for example deleting matching quotes
+  " It's ok to for example delete quotes as long as they're matched.
+  " This is based on paredit and one of the few functions I used to use
+  " there...
+  let save_cursor = getpos('.')
+  let has_quote = search('"', '', line('.'))
+  call setpos('.', save_cursor)
+  if has_quote
+    normal! dt"h
+  else
+    normal! D
+  endif
+endfunction
+
+nnoremap <silent> C :call RazziChange()<cr>a
+
 noremap <C-@><C-@> <C-w><C-w>
 noremap <C-@><leader> <C-w><C-w>
 nnoremap <C-@><Tab> gt
