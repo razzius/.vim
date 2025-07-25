@@ -387,6 +387,8 @@ syntax on
 
 highlight link markdownError Normal
 let g:markdown_folding = 1
+autocmd Filetype markdown setlocal shiftwidth=2
+
 
 " This augroup has to be after filetype
 augroup comment_continuation
