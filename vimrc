@@ -125,10 +125,10 @@ nnoremap <C-Space>" :RazziTerm<cr>
 nnoremap <C-@>% :vert terminal<cr>
 nnoremap <C-@><space> <c-w><c-p>
 nnoremap <C-@>c :tab ter<cr>
-nnoremap <C-@>h <C-w>h
-nnoremap <C-@>j <C-w>j
-nnoremap <C-@>k <C-w>k
-nnoremap <C-@>l <C-w>l
+nnoremap <C-Space>h <C-w>h
+nnoremap <C-Space>j <C-w>j
+nnoremap <C-Space>k <C-w>k
+nnoremap <C-Space>l <C-w>l
 
 vnoremap $ $h
 vnoremap ^ 0
