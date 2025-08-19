@@ -260,9 +260,11 @@ endif
 " doesn't work
 " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
 
-Package https://github.com/SirVer/ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+if has('python')
+  Package https://github.com/SirVer/ultisnips
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+endif
 
 function! EditSnippets()
   execute 'edit ~/.vim/UltiSnips/' . &filetype . '.snippets'
