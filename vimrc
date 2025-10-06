@@ -260,7 +260,7 @@ endif
 " doesn't work
 " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
 
-if has('python')
+if has('python3')
   Package https://github.com/SirVer/ultisnips
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
