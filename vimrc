@@ -12,6 +12,8 @@ try
 catch
 endtry
 
+set guifont=Menlo\ Regular:h18
+
 let mapleader = ' '
 set autoindent
 set expandtab
@@ -380,6 +382,8 @@ Package https://github.com/kana/vim-textobj-entire
 Package https://github.com/farmergreg/vim-lastplace
 
 Package https://github.com/jaawerth/fennel.vim
+
+Package https://github.com/adelarsq/vim-matchit
 
 let g:html_indent_style1 = "inc"
 
