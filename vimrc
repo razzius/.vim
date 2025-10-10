@@ -68,6 +68,10 @@ set showcmd
 " Enable spell checking
 set spell spelllang=en_us
 
+" Display whitespace
+set list
+set listchars=tab:⇥\ ,trail:·
+
 nnoremap - ddp
 nnoremap _ :m .-2<cr>
 nnoremap 0 ^
