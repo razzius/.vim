@@ -166,6 +166,7 @@ nnoremap <leader>r :source $MYVIMRC <bar> :echom "RELOAD"<cr>
 nnoremap <leader>v <C-v>
 nnoremap <leader>w <C-w>
 nnoremap <leader>w2 :vsplit<cr>
+nnoremap <leader>b :bnext<cr>
 nnoremap [<leader> O<esc>j
 nnoremap ]<leader> o<esc>k
 nnoremap q<leader> :q<cr>
