@@ -85,6 +85,7 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
 nnoremap <silent> Q @q
+nnoremap <esc>f /
 
 function! RazziChange()
   " Ok ideally this would allow for example deleting matching quotes
