@@ -380,7 +380,7 @@ Package https://github.com/chrisbra/improvedft
 Package https://github.com/leafgarland/typescript-vim
 
 Package https://github.com/alvan/vim-closetag
-let g:closetag_filetypes = 'html,vue'
+let g:closetag_filetypes = 'html,vue,markdown'
 
 Package https://github.com/kana/vim-textobj-user
 Package https://github.com/kana/vim-textobj-line
