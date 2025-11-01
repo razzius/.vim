@@ -149,6 +149,7 @@ nnoremap <leader>, A,<esc>
 nnoremap <leader>; A;<esc>
 nnoremap <leader>` o```<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
+nnoremap <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
 nnoremap <leader>fs :w<cr>
 nnoremap <leader>" :RazziTerm<cr>
 nnoremap <leader>% :vertical terminal<cr>
