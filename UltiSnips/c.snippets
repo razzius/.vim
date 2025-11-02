@@ -13,9 +13,17 @@ void ${0}
 endsnippet
 
 snippet p
-printf("${0}");
+printf("${1}"${0});
 endsnippet
 
 snippet r
 return ${0};
+endsnippet
+
+snippet fc
+fclose(${0:fp});
+endsnippet
+
+snippet fp
+fprintf(${1}, "${2}", $0);
 endsnippet

@@ -161,6 +161,7 @@ nnoremap <leader>Q :q!<cr>
 nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
 nnoremap <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
 nnoremap <leader>h :help<space>
+nnoremap <leader>k :make<cr>
 nnoremap <leader>l :edit<cr>
 nnoremap <leader>m :messages<cr>
 nnoremap <leader>o o<esc>P
