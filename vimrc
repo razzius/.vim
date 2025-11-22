@@ -249,14 +249,6 @@ augroup cleanup
   autocmd BufWritePre * :call TrimTrailingWhitespace()
 augroup END
 
-Package https://github.com/prabirshrestha/vim-lsp
-
-let g:lsp_document_highlight_enabled = 0
-
-nmap <buffer> g] <plug>(lsp-definition)
-nmap <buffer> <leader>en <plug>(lsp-next-diagnostic)
-nmap <buffer> <leader>ep <plug>(lsp-previous-diagnostic)
-
 Package https://github.com/Vimjas/vim-python-pep8-indent
 
 Package https://github.com/kana/vim-smartinput
