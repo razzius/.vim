@@ -395,6 +395,13 @@ Package https://github.com/jaawerth/fennel.vim
 
 Package https://github.com/adelarsq/vim-matchit
 
+Package https://github.com/dense-analysis/ale
+nnoremap <leader>en :ALENext<cr>
+nnoremap <leader>ep :ALEPrevious<cr>
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_text_changed = 'never'
+
 let g:html_indent_style1 = "inc"
 
 " Has to be after packages have added their ftdetects
