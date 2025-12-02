@@ -180,6 +180,7 @@ nnoremap <silent> <leader><esc> :bdelete<cr>
 
 onoremap <space> iW
 
+" TODO make it clean up plugins not being used any more
 function! EnsurePackage(url)
   let name = split(a:url, '/')[-1]
   let target = $HOME . '/.vim/pack/vendor/opt/' . name
