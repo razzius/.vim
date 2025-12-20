@@ -87,6 +87,9 @@ nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
 nnoremap <silent> Q @q
 nnoremap <esc>f /
 
+" tbh I don't use the capital K manpage functionality but I do type K by accident
+nnoremap K k
+
 function! RazziChange()
   " Ok ideally this would allow for example deleting matching quotes
   " It's ok to for example delete quotes as long as they're matched.
