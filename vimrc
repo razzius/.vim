@@ -181,6 +181,7 @@ nnoremap <leader>b :bnext<cr>
 nnoremap [<leader> O<esc>j
 nnoremap ]<leader> o<esc>k
 nnoremap q<leader> :q<cr>
+nnoremap <silent> <return> :nohlsearch<cr>
 
 nnoremap <silent> <leader><esc> :bdelete<cr>
 
