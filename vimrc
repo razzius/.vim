@@ -72,6 +72,9 @@ set spell spelllang=en_us
 set list
 set listchars=tab:⇥\ ,trail:·
 
+" Show count of search
+set shortmess-=S
+
 nnoremap - ddp
 nnoremap _ :m .-2<cr>
 nnoremap 0 ^
