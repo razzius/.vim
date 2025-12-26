@@ -153,6 +153,7 @@ vnoremap <leader>` v`>a```<esc>`<i```<esc>
 
 nnoremap <leader>, A,<esc>
 nnoremap <leader>; A;<esc>
+nnoremap <silent> <leader>\ :vertical terminal<cr>
 nnoremap <leader>` o```<esc>
 nnoremap <leader>fi :e $MYVIMRC<cr>
 nnoremap <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
