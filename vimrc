@@ -123,6 +123,7 @@ inoremap <C-]> <C-q><TAB>
 inoremap <C-k> <C-o>D
 inoremap <C-l> <esc>lxep
 inoremap <C-b> <C-o>h
+inoremap <S-tab> <C-o><<
 
 " This is the default kitty symbol for Alt+v;
 " since I don't type it I am just remapping it to paste.
