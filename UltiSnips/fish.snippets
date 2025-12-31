@@ -2,9 +2,9 @@ snippet r
 return $0
 endsnippet
 
+# Hack: simulate typing end so it outdents properly
 snippet e
-end
-`!v execute(":<1")`
+en`!v feedkeys("\<BS>d")`
 endsnippet
 
 snippet x
