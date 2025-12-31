@@ -277,15 +277,10 @@ endif
 
 if has('python3')
   Package https://github.com/SirVer/ultisnips
-  let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
 endif
 
-function! EditSnippets()
-  execute 'edit ~/.vim/UltiSnips/' . &filetype . '.snippets'
-endfunction
-
-nnoremap <leader>es :call EditSnippets()<cr>
+nnoremap <leader>es :UltiSnipsEdit<cr>
 
 " Cursor styling for kitty
 let &t_SI = "\<Esc>[6 q"
