@@ -410,6 +410,8 @@ highlight link markdownError Normal
 let g:markdown_folding = 1
 autocmd Filetype markdown setlocal shiftwidth=2
 
+" Markdown files are like html in that kebab-case identifiers are a single token
+autocmd Filetype markdown set iskeyword+=-
 
 " This augroup has to be after filetype
 augroup comment_continuation
