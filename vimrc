@@ -400,6 +400,13 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_text_changed = 'never'
 
+Package https://github.com/junegunn/fzf
+Package https://github.com/junegunn/fzf.vim
+Package https://github.com/dbakker/vim-projectroot
+
+nnoremap <leader>ff :execute 'Files' ProjectRootGuess()<CR>
+
+
 let g:html_indent_style1 = "inc"
 
 " Has to be after packages have added their ftdetects
