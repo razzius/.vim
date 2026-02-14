@@ -2,7 +2,7 @@ snippet r
 return $0
 endsnippet
 
-# Hack: simulate typing end so it outdents properly
+# Hack: simulate typing "end" so it outdents properly
 snippet e
 en`!v feedkeys("\<BS>d")`
 endsnippet
@@ -24,6 +24,10 @@ echo $0
 endsnippet
 
 snippet er
+error $0
+endsnippet
+
+snippet err
 error $0
 endsnippet
 
@@ -71,4 +75,12 @@ endsnippet
 
 snippet d
 debug $0
+endsnippet
+
+snippet rmr
+remove -r
+endsnippet
+
+snippet r1
+return 1
 endsnippet
