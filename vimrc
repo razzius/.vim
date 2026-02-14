@@ -351,6 +351,7 @@ Package https://github.com/DataWraith/auto_mkdir
 Package https://github.com/suy/vim-context-commentstring
 
 Package https://github.com/tpope/vim-commentary
+nmap <leader>c gcc
 
 Package https://github.com/tpope/vim-surround
 vmap s S
