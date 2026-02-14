@@ -75,6 +75,11 @@ set listchars=tab:⇥\ ,trail:·
 " Show count of search
 set shortmess-=S
 
+" Make vim : commandline show options vertically
+set wildmenu
+set wildoptions=pum
+set wildmode=longest:full,full
+
 nnoremap - ddp
 nnoremap _ :m .-2<cr>
 nnoremap 0 ^
