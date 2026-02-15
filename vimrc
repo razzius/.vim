@@ -1,5 +1,5 @@
 if !empty($VIM_TERMINAL)
-  if len(argv()) > 1
+  if len(argv()) > 0
     let tapi_args = '["call", "Tapi_TerminalEdit", ["' . argv()[0] . '"]]'
     let escaped_args = '\033]51;' . tapi_args . '\x07'
     execute "!echo -e '" . escaped_args . "'"
