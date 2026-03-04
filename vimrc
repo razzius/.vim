@@ -137,6 +137,8 @@ inoremap <S-tab> <C-o><<
 inoremap ö <C-r>+
 cnoremap ö <C-r>+
 
+inoremap <esc>v <C-r>+
+
 nnoremap <C-@>c :tab terminal<cr>
 nnoremap <C-@>' :RazziTerm<cr>
 
@@ -411,7 +413,6 @@ Package https://github.com/junegunn/fzf.vim
 Package https://github.com/dbakker/vim-projectroot
 
 nnoremap <leader>ff :execute 'Files' ProjectRootGuess()<CR>
-
 
 let g:html_indent_style1 = "inc"
 
