@@ -175,6 +175,14 @@ nnoremap <leader><return> :nohlsearch<cr>
 nnoremap <leader><tab> :e #<cr>
 nnoremap <leader>Q :q!<cr>
 nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
+
+function! GetProjectPathOfFile()
+  let root = ProjectRootGuess()
+  let filename = expand("%:p")
+  return slice(filename, strlen(root) + 1)
+endfunction
+
+nnoremap <silent> <leader>fp :let @+ = GetProjectPathOfFile() <bar> :echom GetProjectPathOfFile()<cr>
 nnoremap <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
 nnoremap <leader>h :help<space>
 nnoremap <leader>k :make<cr>
