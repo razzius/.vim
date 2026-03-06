@@ -174,7 +174,8 @@ nnoremap <leader><leader> :write<cr>
 nnoremap <leader><return> :nohlsearch<cr>
 nnoremap <leader><tab> :e #<cr>
 nnoremap <leader>Q :q!<cr>
-nnoremap <leader>f<space> :let @+ = expand("%") <bar> :echom expand("%")<cr>
+nnoremap <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
+nnoremap <leader>fn :let @+ = expand("%") <bar> :echom expand("%")<cr>
 
 function! GetProjectPathOfFile()
   let root = ProjectRootGuess()
