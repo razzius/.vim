@@ -228,6 +228,7 @@ cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <del>
 cnoremap <C-f> <Right>
+cnoremap <C-k> <C-\>e''<cr>
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
