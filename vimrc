@@ -145,7 +145,7 @@ nnoremap <C-@>' :RazziTerm<cr>
 " For some reason <C-@>" doesn't work
 nnoremap <C-Space>" :RazziTerm<cr>
 
-nnoremap <C-@>% :vert terminal<cr>
+nnoremap <silent> <C-@>% :vert terminal<cr>
 nnoremap <C-@><space> <c-w><c-p>
 nnoremap <C-@>c :tab ter<cr>
 nnoremap <C-Space>h <C-w>h
@@ -318,17 +318,27 @@ nnoremap <silent> <C-Space>j <C-w>j
 nnoremap <silent> <C-Space>k <C-w>k
 nnoremap <silent> <C-Space>l <C-w>l
 
-nnoremap <C-@>" <C-@>:RazziTerm<cr>
-nnoremap <C-Space>% vert terminal<cr>
+nnoremap <silent> <C-@>" <C-@>:RazziTerm<cr>
+nnoremap <silent> <C-Space>% :vert terminal<cr>
 
-tnoremap <C-Space>% <C-@>:vert terminal<cr>
+tnoremap <C-Space>H <C-@>:vertical resize +5<cr>
+tnoremap <C-Space>J <C-@>:resize +5<cr>
+tnoremap <C-Space>K <C-@>:resize -5<cr>
+tnoremap <C-Space>L <C-@>:vertical resize -5<cr>
+
+nnoremap <C-Space>H :vertical resize +5<cr>
+nnoremap <C-Space>K :resize -5<cr>
+nnoremap <C-Space>J :resize +5<cr>
+nnoremap <C-Space>L :vertical resize -5<cr>
+
+tnoremap <silent> <C-Space>% <C-@>:vert terminal<cr>
 tnoremap <C-Space>' <C-@>:RazziTerm<cr>
 tnoremap <C-Space>" <C-@>:RazziTerm<cr>
 tnoremap <C-Space>h <C-@>:wincmd h<cr>
 tnoremap <C-Space>j <C-@>:wincmd j<cr>
 tnoremap <C-Space>k <C-@>:wincmd k<cr>
 tnoremap <C-Space>l <C-@>:wincmd l<cr>
-tnoremap <C-Space>\\ <C-@>:vert terminal<cr>
+tnoremap <silent> <C-Space>\\ <C-@>:vert terminal<cr>
 
 " shouldn't really use this, but muscle memory
 tnoremap <C-@>" <C-@>:RazziTerm<cr>
@@ -355,7 +365,11 @@ noremap <C-S-tab> <C-@>:tabprevious<cr>
 set signcolumn=yes
 Package https://github.com/airblade/vim-gitgutter
 
-Package https://git.sr.ht/~razzi/razzi-abbrevs
+Package https://git.sr.ht/~razzi/razzi-abbrevs.vim
+autocmd InsertEnter * set virtualedit=onemore
+autocmd InsertLeave * set virtualedit=none
+inoremap <C-c> <esc>
+
 Package https://git.sr.ht/~razzi/transpose-chars
 
 Package https://github.com/DataWraith/auto_mkdir
@@ -448,3 +462,10 @@ augroup switch_windows
   autocmd!
   autocmd BufLeave,FocusLost * silent! wall
 augroup END
+
+onoremap <c-g> <esc>
+
+" Would be nice to have this have no visual... TODO
+nnoremap r<c-g> <nop>
+
+inoremap <c-g> <nop>
