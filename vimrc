@@ -540,7 +540,10 @@ endfunc
 
 augroup auto-source   | " The name of the group is arbitrary
     autocmd!          | " Deletes all auto-commands in the current group
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC | redraw | echom 'Reloaded ' . $MYVIMRC | call timer_start(1000, 'ClearEcho')
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+      \| redraw 
+      \| echom 'Reloaded ' . $MYVIMRC
+      \| call timer_start(1000, 'ClearEcho')
 augroup END
 
 autocmd User MyPlugin echom 'got MyPlugin event'
