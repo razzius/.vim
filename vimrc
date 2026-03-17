@@ -1,62 +1,60 @@
-" if !empty($VIM_TERMINAL)
-"   if len(argv()) > 0
-"     let tapi_args = '["call", "Tapi_TerminalEdit", ["' . argv()[0] . '"]]'
-"     let escaped_args = '\033]51;' . tapi_args . '\x07'
-"     silent execute "!echo -e '" . escaped_args . "'"
-"   endif
-" endif
+if !empty($VIM_TERMINAL) && len(argv()) > 0
+  let tapi_args = '["call", "Tapi_TerminalEdit", ["' . argv()[0] . '"]]'
+  let escaped_args = '\033]51;' . tapi_args . '\x07'
+  silent execute "!echo -e '" . escaped_args . "'"
+endif
 
-syntax off
-" colorscheme blue
-colorscheme zaibatsu
-" try
-"   colorscheme zaibatsu
-"   autocmd ColorScheme zaibatsu highlight MatchParen ctermfg=white ctermbg=NONE cterm=NONE
-" catch
-" endtry
+try
+  colorscheme zaibatsu
+  autocmd ColorScheme zaibatsu
+    \ highlight MatchParen
+    \ ctermfg=white
+    \ ctermbg=NONE
+    \ cterm=NONE
+catch
+endtry
 
-" set guifont=Menlo\ Regular:h18
+let g:mapleader = ' '
+set autoindent
+set expandtab
 
-" let mapleader = ' '
-" set autoindent
-" set expandtab
+" folding
+set nofoldenable
+set foldmethod=syntax
 
-" " folding
-" set nofoldenable
-" set foldmethod=syntax
+" substitution
+set gdefault
 
-" " substitution
-" set gdefault
+" Automatically reopen a file that has been changed outside of vim
+set autoread
 
-" " Automatically reopen a file that has been changed outside of vim
-" set autoread
+" Make editing files start in the same dir as the current file
+set autochdir
 
-" " Make editing files start in the same dir as the current file
-" set autochdir
+" Allows hidden buffers (needed to put buffers in background)
+set hidden
 
-" " Allows hidden buffers
-" set hidden
+" Searching
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
 
-" " Searching
-" set hlsearch
-" set ignorecase
-" set incsearch
-" set smartcase
-
-" set linebreak
+" Wrap lines visually
+set linebreak
 
 " set mouse=a
 
-" set undofile
+set undofile
 
-" " Disable swap files, editors crashing doesn't lose much data
-" set noswapfile
+" Disable swap files, editors crashing doesn't lose much data
+set noswapfile
 
-" " Indentation
-" set shiftwidth=2
-" set smartindent
-" set smarttab
-" set tabstop=2
+" Indentation
+set shiftwidth=2
+set smartindent
+set smarttab
+set tabstop=2
 
 " " Splits
 " set splitbelow
@@ -75,26 +73,26 @@ colorscheme zaibatsu
 " set list
 " set listchars=tab:⇥\ ,trail:·
 
-" " Show count of search
-" set shortmess-=S
+" Show count of search
+set shortmess-=S
 
 " " Make vim : commandline show options vertically
 " set wildmenu
 " set wildoptions=pum
 " set wildmode=longest:full,full
 
-" nnoremap - ddp
-" nnoremap _ :m .-2<cr>
-" nnoremap 0 ^
+nnoremap - ddp
+nnoremap _ :m .-2<cr>
+nnoremap 0 ^
+nnoremap ^ 0
 " nnoremap <C-h> <C-w>h
 " nnoremap <C-l> <C-w>l
 " nnoremap <S-Tab> gT
 " nnoremap <Tab> gt
-" nnoremap ^ 0
 " nnoremap gf :e <cfile><cr>
-" nnoremap <silent> j gj
-" nnoremap <silent> k gk
-" nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
 " nnoremap <silent> Q @q
 " nnoremap <esc>f /
 
@@ -156,7 +154,7 @@ colorscheme zaibatsu
 " nnoremap <C-Space>k <C-w>k
 " nnoremap <C-Space>l <C-w>l
 
-" vnoremap $ $h
+vnoremap $ $h
 " vnoremap ^ 0
 " vnoremap 0 ^
 " vnoremap ! !sort<cr>
@@ -167,13 +165,13 @@ colorscheme zaibatsu
 " nnoremap <leader>; A;<esc>
 " nnoremap <silent> <leader>\ :vertical terminal<cr>
 " nnoremap <leader>` o```<esc>
-" nnoremap <leader>fi :e $MYVIMRC<cr>
-" nnoremap <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
+nnoremap <leader>fi :e $MYVIMRC<cr>
+nnoremap <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
 " nnoremap <leader>fs :w<cr>
 " nnoremap <leader>" :RazziTerm<cr>
 " nnoremap <leader>% :vertical terminal<cr>
 " nnoremap <leader>' :RazziTerm<cr>
-" nnoremap <leader><leader> :write<cr>
+nnoremap <leader><space> :write<cr>
 " nnoremap <leader><return> :nohlsearch<cr>
 
 " function! RazziLastFile()
@@ -188,7 +186,7 @@ colorscheme zaibatsu
 
 " nnoremap <silent> <leader><tab> :RazziLastFile<cr>
 " nnoremap <leader>Q :q!<cr>
-" nnoremap <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
+nnoremap <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
 " nnoremap <leader>fn :let @+ = expand("%") <bar> :echom expand("%")<cr>
 
 " function! GetProjectPathOfFile()
@@ -205,7 +203,7 @@ colorscheme zaibatsu
 " nnoremap <leader>l :edit<cr>
 " nnoremap <leader>m :messages<cr>
 " nnoremap <leader>o o<esc>P
-" nnoremap <leader>q :qa<cr>
+nnoremap <leader>q :qa<cr>
 
 " command! -nargs=0 RazziReload :source $MYVIMRC \| echo "RELOAD"
 " " command! -nargs=0 RazziReload :call RazziReload()
@@ -228,28 +226,28 @@ colorscheme zaibatsu
 " nnoremap <leader>w2 :vsplit<cr>
 " nnoremap <silent> <leader>wm :only<cr>
 " nnoremap <leader>b :bnext<cr>
-" nnoremap [<leader> O<esc>j
-" nnoremap ]<leader> o<esc>k
+nnoremap [<leader> O<esc>j
+nnoremap ]<leader> o<esc>k
 " nnoremap q<leader> :q<cr>
 " nnoremap <silent> <return> :nohlsearch<cr>
 
-" nnoremap <silent> <leader><esc> :bdelete<cr>
+nnoremap <silent> <leader><esc> :bdelete<cr>
 
 " onoremap <space> iW
 
 " " TODO make it clean up plugins not being used any more
-" function! EnsurePackage(url)
-"   let name = split(a:url, '/')[-1]
-"   let target = $HOME . '/.vim/pack/vendor/opt/' . name
+function! Package(url)
+  let name = split(a:url, '/')[-1]
+  let target = $HOME . '/.vim/pack/vendor/opt/' . name
 
-"   if !isdirectory(target)
-"     silent execute '!git clone --depth=1 ' . a:url . ' ' . target
-"   endif
+  if !isdirectory(target)
+    silent execute '!git clone --depth=1 ' . a:url . ' ' . target
+  endif
 
-"   execute 'packadd! ' . name
-" endfunction
+  execute 'packadd! ' . name
+endfunction
 
-" command! -nargs=1 Package :call EnsurePackage(<q-args>)
+command! -nargs=1 Package :call Package(<q-args>)
 
 " command! RazziTerm :terminal ++kill=term
 " command! RazziTermVertical :vertical terminal ++kill=term
@@ -264,25 +262,24 @@ colorscheme zaibatsu
 
 " autocmd Filetype fish setlocal shiftwidth=4
 
-" cnoremap <C-a> <Home>
-" cnoremap <C-b> <Left>
-" cnoremap <C-d> <del>
-" cnoremap <C-f> <Right>
-" cnoremap <C-k> <C-\>e''<cr>
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-d> <del>
+cnoremap <C-f> <Right>
+cnoremap <C-k> <C-\>e''<cr>
 
 " cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" Package https://github.com/chaoren/vim-wordmotion
+Package https://github.com/chaoren/vim-wordmotion
 
-" if has('nvim')
-"   autocmd TermOpen * startinsert
-"   set undodir=~/.config/nvim/undo
-" else
-"   set termwinkey=<C-@>
-"   set autoshelldir
-
-"   set undodir=~/.vim/undo
-" endif
+if has('nvim')
+  " autocmd TermOpen * startinsert
+  " set undodir=~/.config/nvim/undo
+else
+  " set termwinkey=<C-@>
+  " set autoshelldir
+  set undodir=~/.vim/undo
+endif
 
 " if !isdirectory(&undodir)
 "   call mkdir(&undodir, "p", 0o700)
@@ -292,21 +289,21 @@ colorscheme zaibatsu
 "   execute 'tabedit' a:arglist[0]
 " endfunc
 
-" function Tapi_TerminalEdit(bufnum, arglist)
-"   execute 'edit' a:arglist[0]
-" endfunc
+function Tapi_TerminalEdit(bufnum, arglist)
+  execute 'edit' a:arglist[0]
+endfunc
 
-" function! TrimTrailingWhitespace()
-"   let l:save = winsaveview()
-"   keeppatterns %s/\s\+$//e
-"   keeppatterns %s/$\n\+\%$//e
-"   call winrestview(l:save)
-" endfunction
+function! TrimTrailingWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  keeppatterns %s/$\n\+\%$//e
+  call winrestview(l:save)
+endfunction
 
-" augroup cleanup
-"   autocmd!
-"   autocmd BufWritePre * :call TrimTrailingWhitespace()
-" augroup END
+augroup cleanup
+  autocmd!
+  autocmd BufWritePre * :call TrimTrailingWhitespace()
+augroup END
 
 " Package https://github.com/Vimjas/vim-python-pep8-indent
 
@@ -323,17 +320,17 @@ colorscheme zaibatsu
 " " doesn't work
 " " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
 
-" if has('python3')
-"   Package https://github.com/SirVer/ultisnips
-"   let g:UltiSnipsJumpForwardTrigger="<tab>"
-" endif
+if has('python3')
+  Package https://github.com/SirVer/ultisnips
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+endif
 
-" nnoremap <leader>es :UltiSnipsEdit<cr>
+nnoremap <leader>es :UltiSnipsEdit<cr>
 
-" " Cursor styling for kitty
-" let &t_SI = "\<Esc>[6 q"
-" let &t_SR = "\<Esc>[4 q"
-" let &t_EI = "\<Esc>[2 q"
+" Cursor styling for terminal
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " " kitty-aware keybindings
 " nnoremap <silent> <C-Space>' :RazziTerm<cr>
@@ -396,32 +393,33 @@ colorscheme zaibatsu
 " set signcolumn=yes
 " Package https://github.com/airblade/vim-gitgutter
 
-" Package https://git.sr.ht/~razzi/razzi-abbrevs.vim
-" autocmd InsertEnter * set virtualedit=onemore
-" autocmd InsertLeave * set virtualedit=none
-" inoremap <C-c> <esc>
+Package https://github.com/tpope/vim-abolish
+Package https://git.sr.ht/~razzi/razzi-abbrevs.vim
+autocmd InsertEnter * set virtualedit=onemore
+autocmd InsertLeave * set virtualedit=none
+inoremap <C-c> <esc>
 
-" Package https://git.sr.ht/~razzi/transpose-chars
+Package https://git.sr.ht/~razzi/transpose-chars
 
 " Package https://github.com/DataWraith/auto_mkdir
 
-" Package https://github.com/suy/vim-context-commentstring
+Package https://github.com/suy/vim-context-commentstring
 
-" Package https://github.com/tpope/vim-commentary
-" nmap <leader>c gcc
+Package https://github.com/tpope/vim-commentary
+nmap <leader>c gcc
 
-" Package https://github.com/tpope/vim-surround
-" vmap s S
-" vmap s<space> S<space><space>
-" nmap dss ds<space><space>
+Package https://github.com/tpope/vim-surround
+vmap s S
+vmap s<space> S<space><space>
+nmap dss ds<space><space>
 
 " let g:surround_{char2nr("\<cr>")} = "\n\r\n"
 " let g:surround_{char2nr("")} = ""
 
 " Package https://github.com/tpope/vim-repeat
 
-" Package https://github.com/tpope/vim-fugitive
-" nnoremap gb :Git blame<cr>
+Package https://github.com/tpope/vim-fugitive
+nnoremap gb :Git blame<cr>
 
 " function! RenameFile()
 "   let prompt = "Rename " . expand("%") . " to: "
@@ -431,11 +429,9 @@ colorscheme zaibatsu
 
 " nnoremap <leader>fR :call RenameFile()<cr>
 
-" if has("clipboard")
-"   set clipboard=unnamed,unnamedplus
-" endif
-
-" Package https://github.com/tpope/vim-abolish
+if has("clipboard")
+  set clipboard=unnamed,unnamedplus
+endif
 
 " Package https://git.sr.ht/~razzi/any-jump.vim
 
@@ -456,9 +452,9 @@ colorscheme zaibatsu
 
 " Package https://github.com/adelarsq/vim-matchit
 
-" Package https://github.com/dense-analysis/ale
-" nnoremap <leader>en :ALENext<cr>
-" nnoremap <leader>ep :ALEPrevious<cr>
+Package https://github.com/dense-analysis/ale
+nnoremap <leader>en :ALENext<cr>
+nnoremap <leader>ep :ALEPrevious<cr>
 " let g:ale_lint_on_enter = 0
 " let g:ale_lint_on_insert_leave = 0
 " let g:ale_lint_on_text_changed = 'never'
@@ -471,9 +467,9 @@ colorscheme zaibatsu
 
 " let g:html_indent_style1 = "inc"
 
-" " Has to be after packages have added their ftdetects
-" filetype plugin indent on
-" syntax on
+" Has to be after packages have added their ftdetects
+filetype plugin indent on
+syntax on
 
 " highlight link markdownError Normal
 " let g:markdown_folding = 1
@@ -503,48 +499,24 @@ colorscheme zaibatsu
 " " nnoremap rx rl
 " " nnoremap
 " " set guicursor=o:hor1
-
-" " set guicursor=n-v-c:block,o:hor50,i-ci:hor15,r-cr:hor30,sm:block
-" set guicursor=n-v-c:block,o:block,i-ci:block,r-cr:block,sm:block
+set guifont=Menlo\ Regular:h18
 
 " inoremap <c-g> <nop>
 
-silent try
-	function! Mynumber(arg)
-	  echo line(".") .. " " .. a:arg
-          " colorscheme blue
-redraw
-write
-	  silent source $MYVIMRC
-	endfunction
-catch /.*/
-endtry
-
-syntax on
-let g:mapleader = ' '
 nnoremap <leader>i :silent :call system('pbcopy', getline(1, '$')) \| :echom 'Copied'<CR>
-nnoremap <leader>d :silent :call Mynumber(getline(".")) \| :redraw \| :echom 'debug'<CR>
 " nnoremap <leader>r :silent :let buff=join(getline(1, '$'), "\n") \| :eval buff \| :echom 'Reloaded'<CR>
 " nnoremap <leader>r :colorscheme blue \| :w \| :silent :source $MYVIMRC \| :echom 'Reloaded'<CR>
 " nnoremap <leader>r :colorscheme blue \| :w \| :source $MYVIMRC \| :echom 'Reloaded'<CR>
 nnoremap <leader>r :silent write \| :silent source $MYVIMRC \| :redraw \| :echom 'Reloaded'<CR>
 
-" augroup vimrc     " Source vim configuration upon save
-"  autocmd!
-"  autocmd! BufWritePost $MYVIMRC source % | doautocmd User MyPlugin
-"augroup END
-
 func ClearEcho(timer)
   echo ''
 endfunc
 
-augroup auto-source   | " The name of the group is arbitrary
-    autocmd!          | " Deletes all auto-commands in the current group
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-      \| redraw 
-      \| echom 'Reloaded ' . $MYVIMRC
-      \| call timer_start(1000, 'ClearEcho')
+augroup auto-source
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    \| redraw
+    \| echom 'Reloaded ' . $MYVIMRC
+    \| call timer_start(1000, 'ClearEcho')
 augroup END
-
-autocmd User MyPlugin echom 'got MyPlugin event'
-
