@@ -172,7 +172,18 @@ nnoremap <leader>% :vertical terminal<cr>
 nnoremap <leader>' :RazziTerm<cr>
 nnoremap <leader><leader> :write<cr>
 nnoremap <leader><return> :nohlsearch<cr>
-nnoremap <leader><tab> :e #<cr>
+
+function! RazziLastFile()
+  if bufexists(0)
+    execute ":e #"
+  else
+    execute "'1"
+  endif
+endfunction
+
+command! -nargs=0 RazziLastFile :call RazziLastFile()
+
+nnoremap <silent> <leader><tab> :RazziLastFile<cr>
 nnoremap <leader>Q :q!<cr>
 nnoremap <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
 nnoremap <leader>fn :let @+ = expand("%") <bar> :echom expand("%")<cr>
@@ -186,12 +197,29 @@ endfunction
 nnoremap <silent> <leader>fp :let @+ = GetProjectPathOfFile() <bar> :echom GetProjectPathOfFile()<cr>
 nnoremap <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
 nnoremap <leader>h :help<space>
+nnoremap <leader><C-h> :help <C-r>w<cr>
 nnoremap <leader>k :make<cr>
 nnoremap <leader>l :edit<cr>
 nnoremap <leader>m :messages<cr>
 nnoremap <leader>o o<esc>P
 nnoremap <leader>q :qa<cr>
-nnoremap <leader>r :source $MYVIMRC <bar> :echom "RELOAD"<cr>
+
+command! -nargs=0 RazziReload :source $MYVIMRC \| echo "RELOAD"
+" command! -nargs=0 RazziReload :call RazziReload()
+
+" command! -nargs=0 RazziReload2 :echo "RELOAD"
+" command! -nargs=0 RazziLastFile :call RazziLastFile()
+
+" packadd razzi-reload.vim
+" nnoremap <leader>r :RazziReload<cr>
+
+" nnoremap <leader>i :silent :call system('pbcopy', getline(1, '$')) \| :echom 'Copied'<CR>
+nnoremap <leader>r :silent :call load-vim-script($MYVIMRC) \| :echom 'Copied'<CR>
+" works but prompts
+" nnoremap <leader>r :silent :source $MYVIMRC \| :echom 'RELOAD'<cr>
+" nnoremap <leader>r :echo 'RELOAD' \| :silent :source $MYVIMRC <cr>
+nnoremap <leader>s :source $MYVIMRC<cr>
+" nnoremap <leader>s :echo "RELOAD"<cr>
 nnoremap <leader>v <C-v>
 nnoremap <leader>w <C-w>
 nnoremap <leader>w2 :vsplit<cr>
@@ -466,6 +494,21 @@ augroup END
 onoremap <c-g> <esc>
 
 " Would be nice to have this have no visual... TODO
-nnoremap r<c-g> <nop>
+" nnoremap <expr> <C-L> nr2char(getchar())
+" nnoremap <expr> r nr2char(getchar())
+" nnoremap r<c-g> <nop>
+" nnoremap rx rl
+" nnoremap
+" set guicursor=o:hor1
+
+" set guicursor=n-v-c:block,o:hor50,i-ci:hor15,r-cr:hor30,sm:block
+set guicursor=n-v-c:block,o:block,i-ci:block,r-cr:block,sm:block
 
 inoremap <c-g> <nop>
+
+" nnoremap <leader>i :silent :call system('pbcopy', getline(1, '$')) \| :echom 'Copied'<CR>
+
+augroup vimrc     " Source vim configuration upon save
+  autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+  autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+augroup END
