@@ -96,9 +96,7 @@ nnoremap K k
 vnoremap $ $h
 
 " File commands
-nnoremap <silent> gf :e <cfile><cr>
-nnoremap <silent> <leader>fi :e $MYVIMRC<cr>
-nnoremap <silent> <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
+nnoremap <silent> gf :edit <cfile><cr>
 nnoremap <silent> <leader><space> :write<cr>
 nnoremap <silent> <leader><esc> :bdelete<cr>
 nnoremap <silent> <leader>q :qa<cr>
@@ -112,6 +110,8 @@ function! ProjectFilePath()
 endfunction
 
 nnoremap <silent> <leader>fp :let @+ = ProjectFilePath() <bar> :echo ProjectFilePath()<cr>
+nnoremap <silent> <leader>fi :e $MYVIMRC<cr>
+nnoremap <silent> <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
 nnoremap <silent> <leader>fn :let @+ = expand("%") <bar> :echom expand("%")<cr>
 nnoremap <silent> <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
 nnoremap <silent> <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
