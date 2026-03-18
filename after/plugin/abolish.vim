@@ -683,3 +683,4 @@ Abolish ohter other
 Abolish artilce article
 Abolish environemns environments
 Abolish wrpaper wrapper
+Abolish pakcage package
