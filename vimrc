@@ -43,8 +43,6 @@ set smartcase
 " Wrap lines visually
 set linebreak
 
-" set mouse=a
-
 set undofile
 
 " Disable swap files, editors crashing doesn't lose much data
@@ -56,12 +54,20 @@ set smartindent
 set smarttab
 set tabstop=2
 
+" Display whitespace
+set list
+set listchars=tab:⇥\ ,trail:·
+
+" Show count of search
+set shortmess-=S
+
+if has("clipboard")
+  set clipboard=unnamed,unnamedplus
+endif
+
 " " Splits
 " set splitbelow
 " set splitright
-
-" " Allow backspace in insert mode to go outside of the inserted region
-" set backspace=indent,eol,start
 
 " " Show partially-entered commands
 " set showcmd
@@ -69,35 +75,38 @@ set tabstop=2
 " " Enable spell checking
 " set spell spelllang=en_us
 
-" " Display whitespace
-" set list
-" set listchars=tab:⇥\ ,trail:·
-
-" Show count of search
-set shortmess-=S
-
 " " Make vim : commandline show options vertically
 " set wildmenu
 " set wildoptions=pum
 " set wildmode=longest:full,full
 
-nnoremap - ddp
-nnoremap _ :m .-2<cr>
+" Editing commands
+nnoremap <silent> - ddp
+nnoremap <silent> _ :m .-2<cr>
+nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
+
+" Movement commands
 nnoremap 0 ^
 nnoremap ^ 0
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
-" nnoremap <S-Tab> gT
-" nnoremap <Tab> gt
-" nnoremap gf :e <cfile><cr>
 nnoremap <silent> j gj
 nnoremap <silent> k gk
-nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
-" nnoremap <silent> Q @q
-" nnoremap <esc>f /
+" tbh I don't use the capital K manpage functionality but I do type K by accident
+nnoremap K k
+vnoremap $ $h
 
-" " tbh I don't use the capital K manpage functionality but I do type K by accident
-" nnoremap K k
+" File commands
+nnoremap gf :e <cfile><cr>
+
+" Window commands
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Tab command
+nnoremap <S-Tab> gT
+nnoremap <Tab> gt
+
+" Macro commands
+nnoremap <silent> Q @q
 
 " function! RazziChange()
 "   " Ok ideally this would allow for example deleting matching quotes
@@ -154,26 +163,39 @@ nnoremap <silent> D D:call TrimTrailingWhitespace()<cr>
 " nnoremap <C-Space>k <C-w>k
 " nnoremap <C-Space>l <C-w>l
 
-vnoremap $ $h
 " vnoremap ^ 0
 " vnoremap 0 ^
 " vnoremap ! !sort<cr>
 " vmap ` s`
 " vnoremap <leader>` v`>a```<esc>`<i```<esc>
 
-" nnoremap <leader>, A,<esc>
-" nnoremap <leader>; A;<esc>
+nnoremap <silent> <leader>fi :e $MYVIMRC<cr>
+nnoremap <silent> <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
+nnoremap <silent> <leader><space> :write<cr>
+nnoremap <silent> <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
+nnoremap <silent> <leader>Q :q!<cr>
+nnoremap <silent> <return> :nohlsearch<cr>
+nnoremap <silent> <leader>q :qa<cr>
+nnoremap <silent> <leader><esc> :bdelete<cr>
+
+nnoremap <leader>, A,<esc>
+nnoremap <leader>; A;<esc>
+
+nnoremap [<leader> O<esc>j
+nnoremap ]<leader> o<esc>k
+
+nnoremap q<leader> :q<cr>
+
+onoremap <space> iW
+
 " nnoremap <silent> <leader>\ :vertical terminal<cr>
 " nnoremap <leader>` o```<esc>
-nnoremap <leader>fi :e $MYVIMRC<cr>
-nnoremap <leader>fa :execute 'edit ' . g:abbrevs_file<cr>
 " nnoremap <leader>fs :w<cr>
 " nnoremap <leader>" :RazziTerm<cr>
 " nnoremap <leader>% :vertical terminal<cr>
 " nnoremap <leader>' :RazziTerm<cr>
-nnoremap <leader><space> :write<cr>
-" nnoremap <leader><return> :nohlsearch<cr>
 
+" WIP
 " function! RazziLastFile()
 "   if bufexists(0)
 "     execute ":e #"
@@ -185,8 +207,6 @@ nnoremap <leader><space> :write<cr>
 " command! -nargs=0 RazziLastFile :call RazziLastFile()
 
 " nnoremap <silent> <leader><tab> :RazziLastFile<cr>
-" nnoremap <leader>Q :q!<cr>
-nnoremap <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
 " nnoremap <leader>fn :let @+ = expand("%") <bar> :echom expand("%")<cr>
 
 " function! GetProjectPathOfFile()
@@ -203,39 +223,14 @@ nnoremap <leader>f<space> :let @+ = expand("%:p") <bar> :echom expand("%:p")<cr>
 " nnoremap <leader>l :edit<cr>
 " nnoremap <leader>m :messages<cr>
 " nnoremap <leader>o o<esc>P
-nnoremap <leader>q :qa<cr>
 
-" command! -nargs=0 RazziReload :source $MYVIMRC \| echo "RELOAD"
-" " command! -nargs=0 RazziReload :call RazziReload()
-
-" " command! -nargs=0 RazziReload2 :echo "RELOAD"
-" " command! -nargs=0 RazziLastFile :call RazziLastFile()
-
-" " packadd razzi-reload.vim
-" " nnoremap <leader>r :RazziReload<cr>
-
-" " nnoremap <leader>i :silent :call system('pbcopy', getline(1, '$')) \| :echom 'Copied'<CR>
-" nnoremap <leader>r :silent :call load-vim-script($MYVIMRC) \| :echom 'Copied'<CR>
-" " works but prompts
-" " nnoremap <leader>r :silent :source $MYVIMRC \| :echom 'RELOAD'<cr>
-" " nnoremap <leader>r :echo 'RELOAD' \| :silent :source $MYVIMRC <cr>
-" nnoremap <leader>s :source $MYVIMRC<cr>
-" " nnoremap <leader>s :echo "RELOAD"<cr>
 " nnoremap <leader>v <C-v>
 " nnoremap <leader>w <C-w>
 " nnoremap <leader>w2 :vsplit<cr>
 " nnoremap <silent> <leader>wm :only<cr>
 " nnoremap <leader>b :bnext<cr>
-nnoremap [<leader> O<esc>j
-nnoremap ]<leader> o<esc>k
-" nnoremap q<leader> :q<cr>
-" nnoremap <silent> <return> :nohlsearch<cr>
 
-nnoremap <silent> <leader><esc> :bdelete<cr>
-
-" onoremap <space> iW
-
-" " TODO make it clean up plugins not being used any more
+" TODO make it clean up plugins not being used any more
 function! Package(url)
   let name = split(a:url, '/')[-1]
   let target = $HOME . '/.vim/pack/vendor/opt/' . name
@@ -268,7 +263,7 @@ cnoremap <C-d> <del>
 cnoremap <C-f> <Right>
 cnoremap <C-k> <C-\>e''<cr>
 
-" cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 Package https://github.com/chaoren/vim-wordmotion
 
@@ -281,13 +276,9 @@ else
   set undodir=~/.vim/undo
 endif
 
-" if !isdirectory(&undodir)
-"   call mkdir(&undodir, "p", 0o700)
-" endif
-
-" function Tapi_TabEdit(bufnum, arglist)
-"   execute 'tabedit' a:arglist[0]
-" endfunc
+if !isdirectory(&undodir)
+  call mkdir(&undodir, "p", 0o700)
+endif
 
 function Tapi_TerminalEdit(bufnum, arglist)
   execute 'edit' a:arglist[0]
@@ -307,7 +298,8 @@ augroup END
 
 " Package https://github.com/Vimjas/vim-python-pep8-indent
 
-" Package https://github.com/kana/vim-smartinput
+" Matching parenthesis
+Package https://github.com/kana/vim-smartinput
 
 " if executable('pylsp')
 "   autocmd User lsp_setup call lsp#register_server({
@@ -316,9 +308,6 @@ augroup END
 "         \ 'allowlist': ['python'],
 "         \ })
 " endif
-
-" " doesn't work
-" " autocmd BufRead,BufNewFile * if &readonly | call lsp#disable()
 
 if has('python3')
   Package https://github.com/SirVer/ultisnips
@@ -389,9 +378,9 @@ let &t_EI = "\<Esc>[2 q"
 " noremap <C-Tab> <C-@>:tabnext<cr>
 " noremap <C-S-tab> <C-@>:tabprevious<cr>
 
-" " Set signcolumn so when gitgutter loads there's no refresh
-" set signcolumn=yes
-" Package https://github.com/airblade/vim-gitgutter
+" Set signcolumn so when gitgutter loads there's no refresh
+set signcolumn=yes
+Package https://github.com/airblade/vim-gitgutter
 
 Package https://github.com/tpope/vim-abolish
 Package https://git.sr.ht/~razzi/razzi-abbrevs.vim
@@ -401,7 +390,7 @@ inoremap <C-c> <esc>
 
 Package https://git.sr.ht/~razzi/transpose-chars
 
-" Package https://github.com/DataWraith/auto_mkdir
+Package https://github.com/DataWraith/auto_mkdir
 
 Package https://github.com/suy/vim-context-commentstring
 
@@ -413,31 +402,26 @@ vmap s S
 vmap s<space> S<space><space>
 nmap dss ds<space><space>
 
-" let g:surround_{char2nr("\<cr>")} = "\n\r\n"
-" let g:surround_{char2nr("")} = ""
-
-" Package https://github.com/tpope/vim-repeat
+let g:surround_{char2nr("\<cr>")} = "\n\r\n"
+let g:surround_{char2nr("")} = ""
 
 Package https://github.com/tpope/vim-fugitive
 nnoremap gb :Git blame<cr>
 
-" function! RenameFile()
-"   let prompt = "Rename " . expand("%") . " to: "
-"   let new_name = input(prompt)
-"   execute "GRename " . new_name
-" endfunction
+function! RenameFile()
+  let prompt = "Rename " . expand("%") . " to: "
+  let new_name = input(prompt)
+  execute "GRename " . new_name
+endfunction
 
-" nnoremap <leader>fR :call RenameFile()<cr>
+nnoremap <leader>fR :call RenameFile()<cr>
 
-if has("clipboard")
-  set clipboard=unnamed,unnamedplus
-endif
+Package https://github.com/chrisbra/improvedft
+"
+" idk if I use this
+" Package https://github.com/tpope/vim-repeat
 
 " Package https://git.sr.ht/~razzi/any-jump.vim
-
-" Package https://github.com/chrisbra/improvedft
-
-" Package https://github.com/leafgarland/typescript-vim
 
 " Package https://github.com/alvan/vim-closetag
 " let g:closetag_filetypes = 'html,vue,markdown'
@@ -446,11 +430,13 @@ endif
 " Package https://github.com/kana/vim-textobj-line
 " Package https://github.com/kana/vim-textobj-entire
 
-" Package https://github.com/farmergreg/vim-lastplace
+Package https://github.com/farmergreg/vim-lastplace
+
+" Package https://github.com/leafgarland/typescript-vim
 
 " Package https://github.com/jaawerth/fennel.vim
 
-" Package https://github.com/adelarsq/vim-matchit
+Package https://github.com/adelarsq/vim-matchit
 
 Package https://github.com/dense-analysis/ale
 nnoremap <leader>en :ALENext<cr>
@@ -478,12 +464,12 @@ syntax on
 " " Markdown files are like html in that kebab-case identifiers are a single token
 " autocmd Filetype markdown set iskeyword+=-
 
-" " This augroup has to be after filetype
-" augroup comment_continuation
-"   autocmd!
-"   " Don't continue comments by default, opening or hitting return
-"   autocmd BufNewFile,BufRead * setlocal formatoptions-=r formatoptions-=o
-" augroup END
+" This augroup has to be after filetype
+augroup comment_continuation
+  autocmd!
+  " Don't continue comments by default, opening or hitting return
+  autocmd BufNewFile,BufRead * setlocal formatoptions-=r formatoptions-=o
+augroup END
 
 " augroup switch_windows
 "   autocmd!
@@ -503,18 +489,13 @@ set guifont=Menlo\ Regular:h18
 
 " inoremap <c-g> <nop>
 
-nnoremap <leader>i :silent :call system('pbcopy', getline(1, '$')) \| :echom 'Copied'<CR>
-" nnoremap <leader>r :silent :let buff=join(getline(1, '$'), "\n") \| :eval buff \| :echom 'Reloaded'<CR>
-" nnoremap <leader>r :colorscheme blue \| :w \| :silent :source $MYVIMRC \| :echom 'Reloaded'<CR>
-" nnoremap <leader>r :colorscheme blue \| :w \| :source $MYVIMRC \| :echom 'Reloaded'<CR>
-nnoremap <leader>r :silent write \| :silent source $MYVIMRC \| :redraw \| :echom 'Reloaded'<CR>
-
-func ClearEcho(timer)
-  echo ''
-endfunc
-
 augroup auto-source
   autocmd!
+
+  func ClearEcho(timer)
+    echo ''
+  endfunc
+
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
     \| redraw
     \| echom 'Reloaded ' . $MYVIMRC
