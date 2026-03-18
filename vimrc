@@ -14,7 +14,6 @@ try
 catch
 endtry
 
-let g:mapleader = ' '
 set autoindent
 set expandtab
 
@@ -79,6 +78,8 @@ endif
 " set wildmenu
 " set wildoptions=pum
 " set wildmode=longest:full,full
+
+let g:mapleader = ' '
 
 " Editing commands
 nnoremap <silent> - ddp
@@ -217,7 +218,7 @@ onoremap <space> iW
 
 " nnoremap <silent> <leader>fp :let @+ = GetProjectPathOfFile() <bar> :echom GetProjectPathOfFile()<cr>
 " nnoremap <leader>fo :exe ':silent !open %'<cr>:redraw!<cr>
-" nnoremap <leader>h :help<space>
+nnoremap <leader>h :help<space><C-r><C-w><cr>
 " nnoremap <leader><C-h> :help <C-r>w<cr>
 " nnoremap <leader>k :make<cr>
 " nnoremap <leader>l :edit<cr>
@@ -230,20 +231,8 @@ onoremap <space> iW
 " nnoremap <silent> <leader>wm :only<cr>
 " nnoremap <leader>b :bnext<cr>
 
-" TODO make it clean up plugins not being used any more
-function! Package(url)
-  let name = split(a:url, '/')[-1]
-  let target = $HOME . '/.vim/pack/vendor/opt/' . name
-
-  if !isdirectory(target)
-    silent execute '!git clone --depth=1 ' . a:url . ' ' . target
-  endif
-
-  execute 'packadd! ' . name
-endfunction
-
-command! -nargs=1 Package :call Package(<q-args>)
-
+" could move this to a package which is tracked in the main git repo
+packadd package.vim
 " command! RazziTerm :terminal ++kill=term
 " command! RazziTermVertical :vertical terminal ++kill=term
 
@@ -383,12 +372,15 @@ set signcolumn=yes
 Package https://github.com/airblade/vim-gitgutter
 
 Package https://github.com/tpope/vim-abolish
+
 Package https://git.sr.ht/~razzi/razzi-abbrevs.vim
 autocmd InsertEnter * set virtualedit=onemore
 autocmd InsertLeave * set virtualedit=none
 inoremap <C-c> <esc>
 
 Package https://git.sr.ht/~razzi/transpose-chars
+
+Package https://git.sr.ht/~razzi/auto-source.vim
 
 Package https://github.com/DataWraith/auto_mkdir
 
@@ -426,9 +418,9 @@ Package https://github.com/chrisbra/improvedft
 " Package https://github.com/alvan/vim-closetag
 " let g:closetag_filetypes = 'html,vue,markdown'
 
-" Package https://github.com/kana/vim-textobj-user
-" Package https://github.com/kana/vim-textobj-line
-" Package https://github.com/kana/vim-textobj-entire
+Package https://github.com/kana/vim-textobj-user
+Package https://github.com/kana/vim-textobj-line
+Package https://github.com/kana/vim-textobj-entire
 
 Package https://github.com/farmergreg/vim-lastplace
 
@@ -488,16 +480,3 @@ augroup END
 set guifont=Menlo\ Regular:h18
 
 " inoremap <c-g> <nop>
-
-augroup auto-source
-  autocmd!
-
-  func ClearEcho(timer)
-    echo ''
-  endfunc
-
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
-    \| redraw
-    \| echom 'Reloaded ' . $MYVIMRC
-    \| call timer_start(1000, 'ClearEcho')
-augroup END
