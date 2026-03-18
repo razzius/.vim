@@ -14,9 +14,6 @@ try
 catch
 endtry
 
-set autoindent
-set expandtab
-
 " folding
 set nofoldenable
 set foldmethod=syntax
@@ -52,6 +49,8 @@ set shiftwidth=2
 set smartindent
 set smarttab
 set tabstop=2
+set autoindent
+set expandtab
 
 " Display whitespace
 set list
@@ -216,7 +215,6 @@ Package https://github.com/tpope/vim-surround
 vmap s S
 vmap s<space> S<space><space>
 nmap dss ds<space><space>
-
 let g:surround_{char2nr("\<cr>")} = "\n\r\n"
 let g:surround_{char2nr("")} = ""
 
