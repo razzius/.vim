@@ -684,3 +684,9 @@ Abolish artilce article
 Abolish environemns environments
 Abolish wrpaper wrapper
 Abolish pakcage package
+Abolish caclulator calculator
+Abolish juipter jupiter
+Abolish atuo auto
+Abolish consoel console
+Abolish deubg debug
+Abolish functino function
