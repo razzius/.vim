@@ -723,3 +723,11 @@ Abolish nown known
 Abolish conect connect
 Abolish echi echo
 Abolish expectd expected
+Abolish happenign happening
+Abolish stickign sticking
+Abolish pach patch
+Abolish ont not
+Abolish everywher everywhere
+Abolish improt import
+Abolish campaing campaign
+Abolish yur your
