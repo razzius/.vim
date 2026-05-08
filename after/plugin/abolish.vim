@@ -690,3 +690,11 @@ Abolish atuo auto
 Abolish consoel console
 Abolish deubg debug
 Abolish functino function
+Abolish happenign happening
+Abolish stickign sticking
+Abolish pach patch
+Abolish ont not
+Abolish everywher everywhere
+Abolish improt import
+Abolish campaing campaign
+Abolish yur your
