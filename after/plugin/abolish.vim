@@ -698,3 +698,10 @@ Abolish everywher everywhere
 Abolish improt import
 Abolish campaing campaign
 Abolish yur your
+Abolish sicentific scientific
+Abolish berathing breathing
+Abolish humanas humans
+Abolish speices species
+Abolish drawin darwin
+Abolish sring string
+Abolish tets tests
