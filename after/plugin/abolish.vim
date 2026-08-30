@@ -721,3 +721,5 @@ Abolish probelm problem
 Abolish commanline commandline
 Abolish nown known
 Abolish conect connect
+Abolish echi echo
+Abolish expectd expected
