@@ -707,3 +707,10 @@ Abolish speices species
 Abolish drawin darwin
 Abolish sring string
 Abolish tets tests
+Abolish algin align
+Abolish hosue house
+Abolish expnds expands
+Abolish euqals equals
+Abolish chopm chomp
+Abolish filse files
+Abolish misison mission
