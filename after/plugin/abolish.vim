@@ -714,3 +714,8 @@ Abolish euqals equals
 Abolish chopm chomp
 Abolish filse files
 Abolish misison mission
+Abolish sicence science
+Abolish thta that
+Abolish paht path
+Abolish probelm problem
+Abolish commanline commandline
