@@ -87,6 +87,7 @@ nnoremap <leader>; A;<esc>
 nnoremap [<leader> O<esc>j
 nnoremap ]<leader> o<esc>k
 nnoremap <leader>o o<esc>P
+nnoremap <leader><tab> :bp<cr>
 
 onoremap <space> iW
 
