@@ -719,3 +719,5 @@ Abolish thta that
 Abolish paht path
 Abolish probelm problem
 Abolish commanline commandline
+Abolish nown known
+Abolish conect connect
