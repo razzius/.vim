@@ -690,8 +690,6 @@ Abolish atuo auto
 Abolish consoel console
 Abolish deubg debug
 Abolish functino function
-Abolish echi echo
-Abolish expectd expected
 Abolish happenign happening
 Abolish stickign sticking
 Abolish pach patch
