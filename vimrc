@@ -256,7 +256,8 @@ Package https://github.com/junegunn/fzf
 Package https://github.com/junegunn/fzf.vim
 Package https://github.com/dbakker/vim-projectroot
 
-nnoremap <leader>ff :execute 'Files' ProjectRootGuess()<CR>
+nnoremap <leader>ff :execute 'Files' ProjectRootGuess()<cr>
+nnoremap <leader>fr :execute 'History'<cr>
 
 let g:html_indent_style1 = "inc"
 
