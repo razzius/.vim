@@ -72,6 +72,10 @@ set wildmenu
 set wildoptions=pum
 set wildmode=longest:full,full
 
+" Make vim wait until full command is entered for things like
+" leader-key-prefixed commands
+set notimeout
+
 let g:mapleader = ' '
 
 " Editing commands
