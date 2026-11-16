@@ -129,6 +129,7 @@ inoremap <C-k> <C-o>D
 inoremap <C-b> <C-o>h
 inoremap <C-d> <C-o>x
 inoremap <S-tab> <C-o><<
+inoremap <C-e> <C-o>$
 
 " Command mode keybindings
 cnoremap <C-a> <Home>
@@ -258,6 +259,8 @@ Package https://github.com/dbakker/vim-projectroot
 
 nnoremap <leader>ff :execute 'Files' ProjectRootGuess()<cr>
 nnoremap <leader>fr :execute 'History'<cr>
+
+nnoremap <esc>t viWomxdwviWp`xPE
 
 let g:html_indent_style1 = "inc"
 
