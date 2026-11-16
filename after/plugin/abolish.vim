@@ -746,3 +746,4 @@ Abolish documetn document
 Abolish eart earth
 Abolish significatn significant
 Abolish styel style
+Abolish hsitory history
