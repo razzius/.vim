@@ -744,3 +744,5 @@ Abolish borken broken
 Abolish comand_line command_line
 Abolish documetn document
 Abolish eart earth
+Abolish significatn significant
+Abolish styel style
